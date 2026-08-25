@@ -1,0 +1,42 @@
+AUDIT SESSION: rater_2 | scenario=high_contention | condition=scaa
+Number of decisions shown: 17 (of 48 total)
+Start a timer now. Read the following, then answer the 5 questions below.
+======================================================================
+
+Job 0 (priority 2, tick 1): assigning it to Machine 0 instead of assigning it to Machine 1. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 1 (priority 1, tick 5): assigning it to Machine 0 instead of assigning it to Machine 1. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 3 (priority 3, tick 6): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 2 (priority 1, tick 7): rejecting it instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 5 (priority 2, tick 9): rejecting it instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 7 (priority 2, tick 12): assigning it to Machine 0 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 4 (priority 3, tick 13): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 6 (priority 1, tick 14): rejecting it instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 8 (priority 2, tick 17): assigning it to Machine 0 instead of assigning it to Machine 1. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 9 (priority 3, tick 22): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 13 (priority 3, tick 29): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 14 (priority 2, tick 31): assigning it to Machine 0 instead of rejecting it. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 15 (priority 1, tick 33): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 17 (priority 3, tick 40): assigning it to Machine 0 instead of assigning it to Machine 1. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 19 (priority 3, tick 41): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 23 (priority 3, tick 42): rejecting it instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 22 (priority 2, tick 47): assigning it to Machine 0 instead of assigning it to Machine 1. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+
+======================================================================
+QUIZ (answer briefly, then record your total time):
+
+1. Why did the agent choose 'reject' for job 6 (tick 14)?
+   Your answer: ______________________
+
+2. Why did the agent choose 'reject' for job 2 (tick 7)?
+   Your answer: ______________________
+
+3. Why did the agent choose 'assign->M0' for job 22 (tick 47)?
+   Your answer: ______________________
+
+4. Why did the agent choose 'assign->M0' for job 8 (tick 17)?
+   Your answer: ______________________
+
+5. Why did the agent choose 'assign->M1' for job 13 (tick 29)?
+   Your answer: ______________________
+
+Total time taken (mm:ss): ______

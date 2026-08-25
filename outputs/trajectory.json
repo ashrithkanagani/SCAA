@@ -1,0 +1,1255 @@
+{
+  "final_outcome": {
+    "sla_penalty": 20.0,
+    "completed_jobs": 23,
+    "late_jobs": 2,
+    "rejected_jobs": 0
+  },
+  "steps": [
+    {
+      "step_id": 0,
+      "tick": 1,
+      "job_id": 0,
+      "job_priority": 2,
+      "job_deadline": 7,
+      "job_duration": 3,
+      "n_pending_jobs": 1,
+      "n_free_machines": 4,
+      "candidate_labels": [
+        "assign->M0",
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.7619047619047619,
+        1.7619047619047619,
+        1.7619047619047619,
+        1.7619047619047619,
+        0.8571428571428572,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 1.7619047619047619,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 0,
+        "machine_id": 0
+      },
+      "runner_up_label": "assign->M1",
+      "runner_up_score": 1.7619047619047619,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 0,
+        "machine_id": 1
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.775,
+        "F": 0.45714285714285713,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6130900386951742,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 1,
+      "tick": 2,
+      "job_id": 1,
+      "job_priority": 1,
+      "job_deadline": 13,
+      "job_duration": 2,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        0.9166666666666666,
+        0.9166666666666666,
+        0.9166666666666666,
+        0.9166666666666666,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 0.9166666666666666,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 1,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M2",
+      "runner_up_score": 0.9166666666666666,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 1,
+        "machine_id": 2
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.7000000000000001,
+        "F": 0.2333333333333333,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.49356622917136467,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 2,
+      "tick": 4,
+      "job_id": 2,
+      "job_priority": 1,
+      "job_deadline": 10,
+      "job_duration": 3,
+      "n_pending_jobs": 1,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.0952380952380951,
+        1.0952380952380951,
+        0.8571428571428572,
+        0.1
+      ],
+      "chosen_label": "assign->M2",
+      "chosen_score": 1.0952380952380951,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 2,
+        "machine_id": 2
+      },
+      "runner_up_label": "assign->M3",
+      "runner_up_score": 1.0952380952380951,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 2,
+        "machine_id": 3
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.775,
+        "F": 0.2571428571428571,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.5330900386951742,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 3,
+      "tick": 6,
+      "job_id": 3,
+      "job_priority": 1,
+      "job_deadline": 17,
+      "job_duration": 5,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M0",
+        "assign->M1",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        0.9166666666666666,
+        0.9166666666666666,
+        0.9166666666666666,
+        0.9166666666666666,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 0.9166666666666666,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 3,
+        "machine_id": 0
+      },
+      "runner_up_label": "assign->M1",
+      "runner_up_score": 0.9166666666666666,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 3,
+        "machine_id": 1
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.925,
+        "F": 0.2333333333333333,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.5835662291713647,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 4,
+      "tick": 7,
+      "job_id": 4,
+      "job_priority": 3,
+      "job_deadline": 14,
+      "job_duration": 2,
+      "n_pending_jobs": 1,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        2.375,
+        2.375,
+        0.875,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 2.375,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 4,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M3",
+      "runner_up_score": 2.375,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 4,
+        "machine_id": 3
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.7000000000000001,
+        "F": 0.65,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6602328958380314,
+      "explanation_worthy": true,
+      "narration": "Job 4 (priority 3, tick 7): assigning it to Machine 1 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 5,
+      "tick": 9,
+      "job_id": 5,
+      "job_priority": 2,
+      "job_deadline": 17,
+      "job_duration": 4,
+      "n_pending_jobs": 1,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.6666666666666665,
+        1.6666666666666665,
+        0.8888888888888888,
+        0.1
+      ],
+      "chosen_label": "assign->M2",
+      "chosen_score": 1.6666666666666665,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 5,
+        "machine_id": 2
+      },
+      "runner_up_label": "assign->M3",
+      "runner_up_score": 1.6666666666666665,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 5,
+        "machine_id": 3
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.8500000000000001,
+        "F": 0.4444444444444444,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6380106736158092,
+      "explanation_worthy": true,
+      "narration": "Job 5 (priority 2, tick 9): assigning it to Machine 2 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 6,
+      "tick": 10,
+      "job_id": 6,
+      "job_priority": 2,
+      "job_deadline": 14,
+      "job_duration": 2,
+      "n_pending_jobs": 1,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.9333333333333333,
+        1.9333333333333333,
+        0.8,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 1.9333333333333333,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 6,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M3",
+      "runner_up_score": 1.9333333333333333,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 6,
+        "machine_id": 3
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.7000000000000001,
+        "F": 0.48,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.5922328958380314,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 7,
+      "tick": 11,
+      "job_id": 7,
+      "job_priority": 2,
+      "job_deadline": 19,
+      "job_duration": 6,
+      "n_pending_jobs": 1,
+      "n_free_machines": 1,
+      "candidate_labels": [
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.6666666666666665,
+        0.8888888888888888,
+        0.1
+      ],
+      "chosen_label": "assign->M3",
+      "chosen_score": 1.6666666666666665,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 7,
+        "machine_id": 3
+      },
+      "runner_up_label": "defer",
+      "runner_up_score": 0.8888888888888888,
+      "runner_up_action": {
+        "type": "defer",
+        "job_id": 7
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 1.0,
+        "F": 0.4444444444444444,
+        "D": 0.15714183033044626
+      },
+      "severity_score": 0.6092061438438671,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 8,
+      "tick": 12,
+      "job_id": 8,
+      "job_priority": 1,
+      "job_deadline": 22,
+      "job_duration": 6,
+      "n_pending_jobs": 1,
+      "n_free_machines": 1,
+      "candidate_labels": [
+        "assign->M0",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        0.9393939393939393,
+        0.9090909090909091,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 0.9393939393939393,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 8,
+        "machine_id": 0
+      },
+      "runner_up_label": "defer",
+      "runner_up_score": 0.9090909090909091,
+      "runner_up_action": {
+        "type": "defer",
+        "job_id": 8
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 1.0,
+        "F": 0.23636363636363636,
+        "D": 0.5814897810348212
+      },
+      "severity_score": 0.6108434107524188,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 9,
+      "tick": 13,
+      "job_id": 9,
+      "job_priority": 2,
+      "job_deadline": 17,
+      "job_duration": 6,
+      "n_pending_jobs": 1,
+      "n_free_machines": 1,
+      "candidate_labels": [
+        "assign->M1",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.3333333333333335,
+        0.8,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 1.3333333333333335,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 9,
+        "machine_id": 1
+      },
+      "runner_up_label": "defer",
+      "runner_up_score": 0.8,
+      "runner_up_action": {
+        "type": "defer",
+        "job_id": 9
+      },
+      "is_commit": true,
+      "influence_score": 5.0,
+      "severity_components": {
+        "I": 1.0,
+        "F": 0.48,
+        "D": 0.2644818865464632
+      },
+      "severity_score": 0.6448963773092927,
+      "explanation_worthy": true,
+      "narration": "Job 9 (priority 2, tick 13): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility)."
+    },
+    {
+      "step_id": 10,
+      "tick": 14,
+      "job_id": 10,
+      "job_priority": 3,
+      "job_deadline": 26,
+      "job_duration": 4,
+      "n_pending_jobs": 1,
+      "n_free_machines": 1,
+      "candidate_labels": [
+        "assign->M2",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        2.230769230769231,
+        0.9230769230769231,
+        0.1
+      ],
+      "chosen_label": "assign->M2",
+      "chosen_score": 2.230769230769231,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 10,
+        "machine_id": 2
+      },
+      "runner_up_label": "defer",
+      "runner_up_score": 0.9230769230769231,
+      "runner_up_action": {
+        "type": "defer",
+        "job_id": 10
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.8500000000000001,
+        "F": 0.6307692307692307,
+        "D": 0.04295961447257146
+      },
+      "severity_score": 0.6008996152022067,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 11,
+      "tick": 17,
+      "job_id": 11,
+      "job_priority": 1,
+      "job_deadline": 24,
+      "job_duration": 2,
+      "n_pending_jobs": 1,
+      "n_free_machines": 0,
+      "candidate_labels": [
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        0.875,
+        0.1
+      ],
+      "chosen_label": "defer",
+      "chosen_score": 0.875,
+      "chosen_action": {
+        "type": "defer",
+        "job_id": 11
+      },
+      "runner_up_label": "reject",
+      "runner_up_score": 0.1,
+      "runner_up_action": {
+        "type": "reject",
+        "job_id": 11
+      },
+      "is_commit": false,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.1,
+        "F": 0.25,
+        "D": 0.15813297952472694
+      },
+      "severity_score": 0.1716265959049454,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 12,
+      "tick": 18,
+      "job_id": 11,
+      "job_priority": 1,
+      "job_deadline": 24,
+      "job_duration": 2,
+      "n_pending_jobs": 1,
+      "n_free_machines": 1,
+      "candidate_labels": [
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.0952380952380951,
+        0.8571428571428572,
+        0.1
+      ],
+      "chosen_label": "assign->M3",
+      "chosen_score": 1.0952380952380951,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 11,
+        "machine_id": 3
+      },
+      "runner_up_label": "defer",
+      "runner_up_score": 0.8571428571428572,
+      "runner_up_action": {
+        "type": "defer",
+        "job_id": 11
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.7000000000000001,
+        "F": 0.2571428571428571,
+        "D": 0.4428836330215772
+      },
+      "severity_score": 0.4714338694614583,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 13,
+      "tick": 20,
+      "job_id": 12,
+      "job_priority": 2,
+      "job_deadline": 28,
+      "job_duration": 3,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M0",
+        "assign->M1",
+        "assign->M2",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.6666666666666665,
+        1.6666666666666665,
+        1.6666666666666665,
+        0.8888888888888888,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 1.6666666666666665,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 12,
+        "machine_id": 0
+      },
+      "runner_up_label": "assign->M1",
+      "runner_up_score": 1.6666666666666665,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 12,
+        "machine_id": 1
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.775,
+        "F": 0.4444444444444444,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6080106736158092,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 14,
+      "tick": 21,
+      "job_id": 13,
+      "job_priority": 1,
+      "job_deadline": 28,
+      "job_duration": 2,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.0416666666666665,
+        1.0416666666666665,
+        1.0416666666666665,
+        0.875,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 1.0416666666666665,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 13,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M2",
+      "runner_up_score": 1.0416666666666665,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 13,
+        "machine_id": 2
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.7000000000000001,
+        "F": 0.25,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.5002328958380313,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 15,
+      "tick": 23,
+      "job_id": 14,
+      "job_priority": 3,
+      "job_deadline": 29,
+      "job_duration": 3,
+      "n_pending_jobs": 1,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        2.4285714285714284,
+        2.4285714285714284,
+        0.8571428571428572,
+        0.1
+      ],
+      "chosen_label": "assign->M2",
+      "chosen_score": 2.4285714285714284,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 14,
+        "machine_id": 2
+      },
+      "runner_up_label": "assign->M3",
+      "runner_up_score": 2.4285714285714284,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 14,
+        "machine_id": 3
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.775,
+        "F": 0.6571428571428571,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6930900386951743,
+      "explanation_worthy": true,
+      "narration": "Job 14 (priority 3, tick 23): assigning it to Machine 2 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 16,
+      "tick": 25,
+      "job_id": 15,
+      "job_priority": 3,
+      "job_deadline": 36,
+      "job_duration": 3,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M0",
+        "assign->M1",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        2.25,
+        2.25,
+        2.25,
+        0.9166666666666666,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 2.25,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 15,
+        "machine_id": 0
+      },
+      "runner_up_label": "assign->M1",
+      "runner_up_score": 2.25,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 15,
+        "machine_id": 1
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.775,
+        "F": 0.6333333333333333,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6835662291713648,
+      "explanation_worthy": true,
+      "narration": "Job 15 (priority 3, tick 25): assigning it to Machine 0 instead of assigning it to Machine 1. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 17,
+      "tick": 29,
+      "job_id": 16,
+      "job_priority": 1,
+      "job_deadline": 37,
+      "job_duration": 5,
+      "n_pending_jobs": 1,
+      "n_free_machines": 4,
+      "candidate_labels": [
+        "assign->M0",
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.8888888888888888,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 1.0,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 16,
+        "machine_id": 0
+      },
+      "runner_up_label": "assign->M1",
+      "runner_up_score": 1.0,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 16,
+        "machine_id": 1
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.925,
+        "F": 0.24444444444444444,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.5880106736158092,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 18,
+      "tick": 30,
+      "job_id": 17,
+      "job_priority": 1,
+      "job_deadline": 42,
+      "job_duration": 4,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "defer",
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "reject"
+      ],
+      "candidate_scores": [
+        0.9230769230769231,
+        0.8974358974358974,
+        0.8974358974358974,
+        0.8974358974358974,
+        0.1
+      ],
+      "chosen_label": "defer",
+      "chosen_score": 0.9230769230769231,
+      "chosen_action": {
+        "type": "defer",
+        "job_id": 17
+      },
+      "runner_up_label": "assign->M1",
+      "runner_up_score": 0.8974358974358974,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 17,
+        "machine_id": 1
+      },
+      "is_commit": false,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.1,
+        "F": 0.23076923076923075,
+        "D": 0.5845352659826321
+      },
+      "severity_score": 0.24921474550421874,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 19,
+      "tick": 31,
+      "job_id": 18,
+      "job_priority": 2,
+      "job_deadline": 40,
+      "job_duration": 5,
+      "n_pending_jobs": 2,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.6333333333333333,
+        1.6333333333333333,
+        1.6333333333333333,
+        0.9,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 1.6333333333333333,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 18,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M2",
+      "runner_up_score": 1.6333333333333333,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 18,
+        "machine_id": 2
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.925,
+        "F": 0.43999999999999995,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6662328958380314,
+      "explanation_worthy": true,
+      "narration": "Job 18 (priority 2, tick 31): assigning it to Machine 1 instead of assigning it to Machine 2. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 20,
+      "tick": 32,
+      "job_id": 19,
+      "job_priority": 1,
+      "job_deadline": 38,
+      "job_duration": 6,
+      "n_pending_jobs": 2,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.0952380952380951,
+        1.0952380952380951,
+        0.8571428571428572,
+        0.1
+      ],
+      "chosen_label": "assign->M2",
+      "chosen_score": 1.0952380952380951,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 19,
+        "machine_id": 2
+      },
+      "runner_up_label": "assign->M3",
+      "runner_up_score": 1.0952380952380951,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 19,
+        "machine_id": 3
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 1.0,
+        "F": 0.2571428571428571,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6230900386951742,
+      "explanation_worthy": true,
+      "narration": "Job 19 (priority 1, tick 32): assigning it to Machine 2 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 21,
+      "tick": 33,
+      "job_id": 17,
+      "job_priority": 1,
+      "job_deadline": 42,
+      "job_duration": 4,
+      "n_pending_jobs": 1,
+      "n_free_machines": 1,
+      "candidate_labels": [
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        0.9666666666666667,
+        0.9,
+        0.1
+      ],
+      "chosen_label": "assign->M3",
+      "chosen_score": 0.9666666666666667,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 17,
+        "machine_id": 3
+      },
+      "runner_up_label": "defer",
+      "runner_up_score": 0.9,
+      "runner_up_action": {
+        "type": "defer",
+        "job_id": 17
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.8500000000000001,
+        "F": 0.24,
+        "D": 0.5575387791678257
+      },
+      "severity_score": 0.5475077558335653,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 22,
+      "tick": 37,
+      "job_id": 20,
+      "job_priority": 1,
+      "job_deadline": 48,
+      "job_duration": 5,
+      "n_pending_jobs": 1,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M0",
+        "assign->M1",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        0.9166666666666666,
+        0.9166666666666666,
+        0.9166666666666666,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 0.9166666666666666,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 20,
+        "machine_id": 0
+      },
+      "runner_up_label": "assign->M1",
+      "runner_up_score": 0.9166666666666666,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 20,
+        "machine_id": 1
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.925,
+        "F": 0.2333333333333333,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.5835662291713647,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 23,
+      "tick": 38,
+      "job_id": 21,
+      "job_priority": 1,
+      "job_deadline": 42,
+      "job_duration": 3,
+      "n_pending_jobs": 1,
+      "n_free_machines": 2,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.2666666666666666,
+        1.2666666666666666,
+        0.8,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 1.2666666666666666,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 21,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M3",
+      "runner_up_score": 1.2666666666666666,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 21,
+        "machine_id": 3
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.775,
+        "F": 0.28,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.5422328958380314,
+      "explanation_worthy": false,
+      "narration": null
+    },
+    {
+      "step_id": 24,
+      "tick": 42,
+      "job_id": 22,
+      "job_priority": 2,
+      "job_deadline": 54,
+      "job_duration": 5,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.564102564102564,
+        1.564102564102564,
+        1.564102564102564,
+        0.9230769230769231,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 1.564102564102564,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 22,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M2",
+      "runner_up_score": 1.564102564102564,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 22,
+        "machine_id": 2
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.925,
+        "F": 0.43076923076923074,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6625405881457237,
+      "explanation_worthy": true,
+      "narration": "Job 22 (priority 2, tick 42): assigning it to Machine 1 instead of assigning it to Machine 2. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 25,
+      "tick": 46,
+      "job_id": 23,
+      "job_priority": 3,
+      "job_deadline": 50,
+      "job_duration": 6,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M0",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        2.0,
+        2.0,
+        2.0,
+        0.8,
+        0.1
+      ],
+      "chosen_label": "assign->M0",
+      "chosen_score": 2.0,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 23,
+        "machine_id": 0
+      },
+      "runner_up_label": "assign->M2",
+      "runner_up_score": 2.0,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 23,
+        "machine_id": 2
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 1.0,
+        "F": 0.6799999999999999,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.7922328958380312,
+      "explanation_worthy": true,
+      "narration": "Job 23 (priority 3, tick 46): assigning it to Machine 0 instead of assigning it to Machine 2. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+    },
+    {
+      "step_id": 26,
+      "tick": 49,
+      "job_id": 24,
+      "job_priority": 2,
+      "job_deadline": 58,
+      "job_duration": 3,
+      "n_pending_jobs": 1,
+      "n_free_machines": 3,
+      "candidate_labels": [
+        "assign->M1",
+        "assign->M2",
+        "assign->M3",
+        "defer",
+        "reject"
+      ],
+      "candidate_scores": [
+        1.6333333333333333,
+        1.6333333333333333,
+        1.6333333333333333,
+        0.9,
+        0.1
+      ],
+      "chosen_label": "assign->M1",
+      "chosen_score": 1.6333333333333333,
+      "chosen_action": {
+        "type": "assign",
+        "job_id": 24,
+        "machine_id": 1
+      },
+      "runner_up_label": "assign->M2",
+      "runner_up_score": 1.6333333333333333,
+      "runner_up_action": {
+        "type": "assign",
+        "job_id": 24,
+        "machine_id": 2
+      },
+      "is_commit": true,
+      "influence_score": 0.0,
+      "severity_components": {
+        "I": 0.775,
+        "F": 0.43999999999999995,
+        "D": 0.6011644791901566
+      },
+      "severity_score": 0.6062328958380314,
+      "explanation_worthy": false,
+      "narration": null
+    }
+  ]
+}

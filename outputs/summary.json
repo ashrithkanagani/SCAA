@@ -1,0 +1,36 @@
+{
+  "n_decision_steps": 27,
+  "n_explanation_worthy": 9,
+  "gate_rate": 0.3333333333333333,
+  "final_outcome": {
+    "sla_penalty": 20.0,
+    "completed_jobs": 23,
+    "late_jobs": 2,
+    "rejected_jobs": 0
+  },
+  "calibration": {
+    "mean_gap": 0.1526995401340951,
+    "std_gap": 0.37214792728283497,
+    "n_samples": 382
+  },
+  "weights": {
+    "w_irrev": 0.4,
+    "w_impact": 0.4,
+    "w_deviation": 0.2,
+    "gate_threshold": 0.62,
+    "gate_mode": "absolute",
+    "gate_percentile": 0.3
+  },
+  "baseline_sizes": {
+    "scaa_gate": 9,
+    "explain_everything": 27,
+    "attribution_topk": 9,
+    "deviation_only_topk": 9,
+    "oracle_proxy_topk": 9,
+    "random_k": 9,
+    "k": 9,
+    "n_total": 27
+  },
+  "narrator": "TemplateNarrator",
+  "elapsed_seconds": 0.02
+}
