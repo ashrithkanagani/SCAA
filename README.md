@@ -22,8 +22,8 @@ open dashboard/index.html            # then load dashboard/dashboard_data.json
 | `reports/FINAL_RESEARCH_REPORT.md` | Consolidated paper-writing reference: architecture, math, results (all 4 domains, corrected), citations, threats to validity |
 | `reports/PHASE_1_REPORT.md` | Core infrastructure deep-dive (Domain 1: environment, attribution engine, severity gate formulas) |
 | `reports/PHASE_2_REPORT.md` | Math justification, narration design, baselines |
-| `reports/PHASE_3_REPORT.md` | Domain 1 full evaluation methodology (⚠️ coverage numbers superseded, see addendum above) |
-| `reports/PHASE_4_REPORT.md` | Cross-domain generalization methodology (⚠️ coverage numbers superseded, see addendum above) |
+| `reports/PHASE_3_REPORT.md` | Domain 1 full evaluation methodology (coverage numbers superseded, see addendum above) |
+| `reports/PHASE_4_REPORT.md` | Cross-domain generalization methodology (coverage numbers superseded, see addendum above) |
 | `reports/EVALUATION_PLAN.md` | Evaluation protocol design |
 | `reports/NARRATION_FIX_ADDENDUM.md` | A real bug found via human-study pilot testing, and its fix |
 | `reports/human_study/` | Templates for your team's pilot human study (12 sessions, 4 domains) — **not yet filled in** |
