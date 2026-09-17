@@ -1,0 +1,15 @@
+1. job=17 category=tied_machines
+   expected answer (agent rationale): Servers 1 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.775 F=0.23076923076923075 D=0.5
+2. job=6 category=tied_machines
+   expected answer (agent rationale): Servers 2 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 2 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.625 F=0.5 D=0.5
+3. job=23 category=tied_machines
+   expected answer (agent rationale): Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate.
+   gate status: FLAGGED, driving_component=I, I=0.775 F=0.7 D=0.5
+4. job=10 category=tied_machines
+   expected answer (agent rationale): Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.775 F=0.4444444444444444 D=0.5
+5. job=2 category=tied_machines
+   expected answer (agent rationale): Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.7000000000000001 F=0.25 D=0.5

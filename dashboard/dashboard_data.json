@@ -1,0 +1,3651 @@
+{
+  "domains": {
+    "scheduling": {
+      "display_name": "Industrial / IoT Scheduling",
+      "description": "Machines process a stream of jobs with priority, deadline, and duration; assignment commits a machine for the job's duration.",
+      "n_total": 27,
+      "n_gated": 9,
+      "outcome_metrics": {
+        "sla_penalty": 20.0,
+        "completed_jobs": 23,
+        "late_jobs": 2,
+        "rejected_jobs": 0
+      },
+      "steps": [
+        {
+          "step_id": 0,
+          "tick": 1,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.613,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.457,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 0 (priority 2, tick 1): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 1,
+          "tick": 2,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.494,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.233,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 1 (priority 1, tick 2): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 2,
+          "tick": 4,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.533,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.257,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 2 (priority 1, tick 4): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 3,
+          "tick": 6,
+          "job_id": 3,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.584,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.233,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 3 (priority 1, tick 6): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 4,
+          "tick": 7,
+          "job_id": 4,
+          "priority": 3,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.66,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.65,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 4 (priority 3, tick 7): assigning it to Machine 1 instead of assigning it to Machine 3. Machines 1 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 5,
+          "tick": 9,
+          "job_id": 5,
+          "priority": 2,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.638,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.444,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 5 (priority 2, tick 9): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 6,
+          "tick": 10,
+          "job_id": 6,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.592,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.48,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 6 (priority 2, tick 10): assigning it to Machine 1 instead of assigning it to Machine 3. Machines 1 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 7,
+          "tick": 11,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign->M3",
+          "runner_up": "defer",
+          "severity_score": 0.609,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.444,
+            "D": 0.157
+          },
+          "explanation_worthy": false,
+          "narration": "Job 7 (priority 2, tick 11): assigning it to Machine 3 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 8,
+          "tick": 12,
+          "job_id": 8,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "defer",
+          "severity_score": 0.611,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.236,
+            "D": 0.581
+          },
+          "explanation_worthy": false,
+          "narration": "Job 8 (priority 1, tick 12): assigning it to Machine 0 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 9,
+          "tick": 13,
+          "job_id": 9,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "defer",
+          "severity_score": 0.645,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.48,
+            "D": 0.264
+          },
+          "explanation_worthy": true,
+          "narration": "Job 9 (priority 2, tick 13): assigning it to Machine 1 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 10,
+          "tick": 14,
+          "job_id": 10,
+          "priority": 3,
+          "chosen": "assign->M2",
+          "runner_up": "defer",
+          "severity_score": 0.601,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.631,
+            "D": 0.043
+          },
+          "explanation_worthy": false,
+          "narration": "Job 10 (priority 3, tick 14): assigning it to Machine 2 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 11,
+          "tick": 17,
+          "job_id": 11,
+          "priority": 1,
+          "chosen": "defer",
+          "runner_up": "reject",
+          "severity_score": 0.172,
+          "severity_components": {
+            "I": 0.1,
+            "F": 0.25,
+            "D": 0.158
+          },
+          "explanation_worthy": false,
+          "narration": "Job 11 (priority 1, tick 17): deferring it to the next cycle instead of rejecting it. The job was not yet urgent, but also not clearly unsalvageable, so waiting scored higher than rejecting it outright. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 12,
+          "tick": 18,
+          "job_id": 11,
+          "priority": 1,
+          "chosen": "assign->M3",
+          "runner_up": "defer",
+          "severity_score": 0.471,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.257,
+            "D": 0.443
+          },
+          "explanation_worthy": false,
+          "narration": "Job 11 (priority 1, tick 18): assigning it to Machine 3 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 13,
+          "tick": 20,
+          "job_id": 12,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.608,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.444,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 12 (priority 2, tick 20): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 14,
+          "tick": 21,
+          "job_id": 13,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.5,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.25,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 13 (priority 1, tick 21): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 15,
+          "tick": 23,
+          "job_id": 14,
+          "priority": 3,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.693,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.657,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 14 (priority 3, tick 23): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 16,
+          "tick": 25,
+          "job_id": 15,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.684,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.633,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 15 (priority 3, tick 25): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 17,
+          "tick": 29,
+          "job_id": 16,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.588,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.244,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 16 (priority 1, tick 29): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 18,
+          "tick": 30,
+          "job_id": 17,
+          "priority": 1,
+          "chosen": "defer",
+          "runner_up": "assign->M1",
+          "severity_score": 0.249,
+          "severity_components": {
+            "I": 0.1,
+            "F": 0.231,
+            "D": 0.585
+          },
+          "explanation_worthy": false,
+          "narration": "Job 17 (priority 1, tick 30): deferring it to the next cycle instead of assigning it to Machine 1. The job's deadline was not yet close enough to justify committing a machine now, so the agent preferred to wait and re-evaluate next cycle. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 19,
+          "tick": 31,
+          "job_id": 18,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.666,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.44,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 18 (priority 2, tick 31): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 20,
+          "tick": 32,
+          "job_id": 19,
+          "priority": 1,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.623,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.257,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 19 (priority 1, tick 32): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 21,
+          "tick": 33,
+          "job_id": 17,
+          "priority": 1,
+          "chosen": "assign->M3",
+          "runner_up": "defer",
+          "severity_score": 0.548,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.24,
+            "D": 0.558
+          },
+          "explanation_worthy": false,
+          "narration": "Job 17 (priority 1, tick 33): assigning it to Machine 3 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 22,
+          "tick": 37,
+          "job_id": 20,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.584,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.233,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 20 (priority 1, tick 37): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 23,
+          "tick": 38,
+          "job_id": 21,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.542,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.28,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 21 (priority 1, tick 38): assigning it to Machine 1 instead of assigning it to Machine 3. Machines 1 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 24,
+          "tick": 42,
+          "job_id": 22,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.663,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.431,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 22 (priority 2, tick 42): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 25,
+          "tick": 46,
+          "job_id": 23,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M2",
+          "severity_score": 0.792,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.68,
+            "D": 0.601
+          },
+          "explanation_worthy": true,
+          "narration": "Job 23 (priority 3, tick 46): assigning it to Machine 0 instead of assigning it to Machine 2. Machines 0 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 26,
+          "tick": 49,
+          "job_id": 24,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.606,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.44,
+            "D": 0.601
+          },
+          "explanation_worthy": false,
+          "narration": "Job 24 (priority 2, tick 49): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        }
+      ]
+    },
+    "delivery": {
+      "display_name": "Delivery / Logistics Dispatch",
+      "description": "Vehicles are dispatched to orders with a service tier and delivery-window deadline; dispatch commits a vehicle for the delivery duration.",
+      "n_total": 24,
+      "n_gated": 9,
+      "outcome_metrics": {
+        "late_penalty": 12.0,
+        "delivered_orders": 22,
+        "late_orders": 1,
+        "cancelled_orders": 0
+      },
+      "steps": [
+        {
+          "step_id": 0,
+          "tick": 1,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.602,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.48,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 0 (priority 2, tick 1): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 1,
+          "tick": 2,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.471,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.229,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 1 (priority 1, tick 2): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 2,
+          "tick": 4,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.508,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.244,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 2 (priority 1, tick 4): dispatching Vehicle 2 instead of dispatching Vehicle 3. Vehicles 2 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 2 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 3,
+          "tick": 6,
+          "job_id": 3,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.561,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.229,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 3 (priority 1, tick 6): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 4,
+          "tick": 7,
+          "job_id": 4,
+          "priority": 3,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.652,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.68,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 4 (priority 3, tick 7): dispatching Vehicle 1 instead of dispatching Vehicle 3. Vehicles 1 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 5,
+          "tick": 9,
+          "job_id": 5,
+          "priority": 2,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.627,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.467,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 5 (priority 2, tick 9): dispatching Vehicle 2 instead of dispatching Vehicle 3. Vehicles 2 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 6,
+          "tick": 10,
+          "job_id": 6,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.58,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.5,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 6 (priority 2, tick 10): dispatching Vehicle 1 instead of dispatching Vehicle 3. Vehicles 1 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 7,
+          "tick": 11,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign->M3",
+          "runner_up": "assign->M4",
+          "severity_score": 0.616,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.44,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 7 (priority 2, tick 11): dispatching Vehicle 3 instead of dispatching Vehicle 4. Vehicles 3 and 4 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 3 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 8,
+          "tick": 17,
+          "job_id": 8,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.712,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.68,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 8 (priority 3, tick 17): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 9,
+          "tick": 20,
+          "job_id": 9,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.476,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.24,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 9 (priority 1, tick 20): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 10,
+          "tick": 23,
+          "job_id": 10,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.618,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.444,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 10 (priority 2, tick 23): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 11,
+          "tick": 24,
+          "job_id": 11,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.632,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.48,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 11 (priority 2, tick 24): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 12,
+          "tick": 27,
+          "job_id": 12,
+          "priority": 3,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.69,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.7,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 12 (priority 3, tick 27): dispatching Vehicle 2 instead of dispatching Vehicle 3. Vehicles 2 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 13,
+          "tick": 28,
+          "job_id": 13,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M3",
+          "severity_score": 0.597,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.467,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 13 (priority 2, tick 28): dispatching Vehicle 0 instead of dispatching Vehicle 3. Vehicles 0 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 14,
+          "tick": 32,
+          "job_id": 14,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.565,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.236,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 14 (priority 1, tick 32): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 15,
+          "tick": 33,
+          "job_id": 15,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.531,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.227,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 15 (priority 1, tick 33): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 16,
+          "tick": 34,
+          "job_id": 16,
+          "priority": 2,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.653,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.457,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 16 (priority 2, tick 34): dispatching Vehicle 2 instead of dispatching Vehicle 3. Vehicles 2 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 17,
+          "tick": 35,
+          "job_id": 17,
+          "priority": 1,
+          "chosen": "assign->M3",
+          "runner_up": "assign->M4",
+          "severity_score": 0.538,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.244,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 17 (priority 1, tick 35): dispatching Vehicle 3 instead of dispatching Vehicle 4. Vehicles 3 and 4 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 3 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 18,
+          "tick": 39,
+          "job_id": 18,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.561,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.229,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 18 (priority 1, tick 39): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 19,
+          "tick": 40,
+          "job_id": 19,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.513,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.257,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 19 (priority 1, tick 40): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 20,
+          "tick": 44,
+          "job_id": 20,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.65,
+          "severity_components": {
+            "I": 0.925,
+            "F": 0.45,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 20 (priority 2, tick 44): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 21,
+          "tick": 48,
+          "job_id": 21,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M2",
+          "severity_score": 0.733,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.733,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 21 (priority 3, tick 48): dispatching Vehicle 0 instead of dispatching Vehicle 2. Vehicles 0 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 22,
+          "tick": 50,
+          "job_id": 22,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.593,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.457,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 22 (priority 2, tick 50): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 23,
+          "tick": 54,
+          "job_id": 23,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.66,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.7,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 23 (priority 3, tick 54): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        }
+      ]
+    },
+    "cloud": {
+      "display_name": "Cloud / Datacenter Task Scheduling",
+      "description": "Servers are provisioned to compute tasks with an SLA tier and completion deadline; provisioning commits a server for the task's runtime.",
+      "n_total": 26,
+      "n_gated": 8,
+      "outcome_metrics": {
+        "breach_penalty": 0.0,
+        "completed_tasks": 25,
+        "breached_tasks": 0,
+        "denied_tasks": 0
+      },
+      "steps": [
+        {
+          "step_id": 0,
+          "tick": 1,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.572,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.48,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 0 (priority 2, tick 1): provisioning Server 0 instead of provisioning Server 1. Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 1,
+          "tick": 2,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.442,
+          "severity_components": {
+            "I": 0.625,
+            "F": 0.231,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 1 (priority 1, tick 2): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 2,
+          "tick": 4,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.48,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.25,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 2 (priority 1, tick 4): provisioning Server 0 instead of provisioning Server 1. Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 3,
+          "tick": 6,
+          "job_id": 3,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.532,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.231,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 3 (priority 1, tick 6): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 4,
+          "tick": 7,
+          "job_id": 4,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M2",
+          "severity_score": 0.63,
+          "severity_components": {
+            "I": 0.625,
+            "F": 0.7,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 4 (priority 3, tick 7): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 5,
+          "tick": 9,
+          "job_id": 5,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M2",
+          "severity_score": 0.597,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.467,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 5 (priority 2, tick 9): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 6,
+          "tick": 10,
+          "job_id": 6,
+          "priority": 2,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.55,
+          "severity_components": {
+            "I": 0.625,
+            "F": 0.5,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 6 (priority 2, tick 10): provisioning Server 2 instead of provisioning Server 3. Servers 2 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 2 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 7,
+          "tick": 11,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.597,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.467,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 7 (priority 2, tick 11): provisioning Server 1 instead of provisioning Server 3. Servers 1 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 8,
+          "tick": 16,
+          "job_id": 8,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.69,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.7,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 8 (priority 3, tick 16): provisioning Server 0 instead of provisioning Server 1. Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 9,
+          "tick": 19,
+          "job_id": 9,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.448,
+          "severity_components": {
+            "I": 0.625,
+            "F": 0.244,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 9 (priority 1, tick 19): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 10,
+          "tick": 22,
+          "job_id": 10,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.588,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.444,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 10 (priority 2, tick 22): provisioning Server 0 instead of provisioning Server 1. Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 11,
+          "tick": 23,
+          "job_id": 11,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.602,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.48,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 11 (priority 2, tick 23): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 12,
+          "tick": 26,
+          "job_id": 12,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M2",
+          "severity_score": 0.673,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.733,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 12 (priority 3, tick 26): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 13,
+          "tick": 27,
+          "job_id": 13,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.567,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.467,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 13 (priority 2, tick 27): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 14,
+          "tick": 31,
+          "job_id": 14,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.536,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.24,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 14 (priority 1, tick 31): provisioning Server 0 instead of provisioning Server 1. Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 15,
+          "tick": 32,
+          "job_id": 15,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.476,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.24,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 15 (priority 1, tick 32): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 16,
+          "tick": 34,
+          "job_id": 16,
+          "priority": 3,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.652,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.68,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 16 (priority 3, tick 34): provisioning Server 2 instead of provisioning Server 3. Servers 2 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 17,
+          "tick": 35,
+          "job_id": 17,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.502,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.231,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 17 (priority 1, tick 35): provisioning Server 1 instead of provisioning Server 3. Servers 1 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 18,
+          "tick": 37,
+          "job_id": 18,
+          "priority": 3,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M2",
+          "severity_score": 0.682,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.68,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 18 (priority 3, tick 37): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 19,
+          "tick": 38,
+          "job_id": 19,
+          "priority": 1,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.532,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.231,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 19 (priority 1, tick 38): provisioning Server 2 instead of provisioning Server 3. Servers 2 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 2 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 20,
+          "tick": 39,
+          "job_id": 20,
+          "priority": 1,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M3",
+          "severity_score": 0.487,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.267,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 20 (priority 1, tick 39): provisioning Server 1 instead of provisioning Server 3. Servers 1 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 21,
+          "tick": 42,
+          "job_id": 21,
+          "priority": 1,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M1",
+          "severity_score": 0.535,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.236,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 21 (priority 1, tick 42): provisioning Server 0 instead of provisioning Server 1. Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 22,
+          "tick": 44,
+          "job_id": 22,
+          "priority": 2,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.53,
+          "severity_components": {
+            "I": 0.625,
+            "F": 0.45,
+            "D": 0.5
+          },
+          "explanation_worthy": false,
+          "narration": "Job 22 (priority 2, tick 44): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 23,
+          "tick": 46,
+          "job_id": 23,
+          "priority": 3,
+          "chosen": "assign->M1",
+          "runner_up": "assign->M2",
+          "severity_score": 0.69,
+          "severity_components": {
+            "I": 0.775,
+            "F": 0.7,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 23 (priority 3, tick 46): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 24,
+          "tick": 47,
+          "job_id": 24,
+          "priority": 2,
+          "chosen": "assign->M0",
+          "runner_up": "assign->M2",
+          "severity_score": 0.632,
+          "severity_components": {
+            "I": 0.85,
+            "F": 0.48,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 24 (priority 2, tick 47): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 25,
+          "tick": 48,
+          "job_id": 25,
+          "priority": 3,
+          "chosen": "assign->M2",
+          "runner_up": "assign->M3",
+          "severity_score": 0.66,
+          "severity_components": {
+            "I": 0.7,
+            "F": 0.7,
+            "D": 0.5
+          },
+          "explanation_worthy": true,
+          "narration": "Job 25 (priority 3, tick 48): provisioning Server 2 instead of provisioning Server 3. Servers 2 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        }
+      ]
+    },
+    "taillard_jssp": {
+      "display_name": "Job-Shop Scheduling (real benchmark: la01.txt)",
+      "description": "Real published Taillard/Lawrence job-shop-scheduling benchmark instance (JSPLIB). Each job is a fixed sequence of operations on specific machines; dispatching a job's operation commits that machine for its duration.",
+      "n_total": 50,
+      "n_gated": 44,
+      "outcome_metrics": {
+        "breach_penalty": 4248.0,
+        "completed_jobs": 4,
+        "breached_jobs": 6,
+        "makespan": 773
+      },
+      "steps": [
+        {
+          "step_id": 0,
+          "tick": 0,
+          "job_id": 4,
+          "priority": 2,
+          "chosen": "assign_job_4",
+          "runner_up": "assign_job_1",
+          "severity_score": 0.691,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.401,
+            "D": 0.655
+          },
+          "explanation_worthy": true,
+          "narration": "Job 4 (priority 2, tick 0): dispatching Job 4's next operation instead of dispatching Job 1's next operation. Job 4 and Job 1 both had operations ready for this machine; Job 4 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 1,
+          "tick": 1,
+          "job_id": 5,
+          "priority": 3,
+          "chosen": "assign_job_5",
+          "runner_up": "assign_job_3",
+          "severity_score": 0.802,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.81
+          },
+          "explanation_worthy": true,
+          "narration": "Job 5 (priority 3, tick 1): dispatching Job 5's next operation instead of dispatching Job 3's next operation. Job 5 and Job 3 both had operations ready for this machine; Job 5 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 2,
+          "tick": 2,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign_job_7",
+          "runner_up": null,
+          "severity_score": 0.56,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.401,
+            "D": 0.0
+          },
+          "explanation_worthy": false,
+          "narration": "Job 7 (priority 2, tick 2): dispatching Job 7's next operation. It was the only job with a ready operation for this machine at this moment. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 3,
+          "tick": 3,
+          "job_id": 6,
+          "priority": 3,
+          "chosen": "assign_job_6",
+          "runner_up": "assign_job_8",
+          "severity_score": 0.691,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.253
+          },
+          "explanation_worthy": true,
+          "narration": "Job 6 (priority 3, tick 3): dispatching Job 6's next operation instead of dispatching Job 8's next operation. Job 6 and Job 8 both had operations ready for this machine; Job 6 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 4,
+          "tick": 4,
+          "job_id": 9,
+          "priority": 3,
+          "chosen": "assign_job_9",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 9 (priority 3, tick 4): dispatching Job 9's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 5,
+          "tick": 55,
+          "job_id": 5,
+          "priority": 3,
+          "chosen": "assign_job_5",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 5 (priority 3, tick 55): dispatching Job 5's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 6,
+          "tick": 56,
+          "job_id": 3,
+          "priority": 3,
+          "chosen": "assign_job_3",
+          "runner_up": "assign_job_0",
+          "severity_score": 0.77,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.649
+          },
+          "explanation_worthy": true,
+          "narration": "Job 3 (priority 3, tick 56): dispatching Job 3's next operation instead of dispatching Job 0's next operation. Job 3 and Job 0 both had operations ready for this machine; Job 3 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 7,
+          "tick": 73,
+          "job_id": 8,
+          "priority": 1,
+          "chosen": "assign_job_8",
+          "runner_up": "assign_job_2",
+          "severity_score": 0.615,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.201,
+            "D": 0.671
+          },
+          "explanation_worthy": false,
+          "narration": "Job 8 (priority 1, tick 73): dispatching Job 8's next operation instead of dispatching Job 2's next operation. Job 8 and Job 2 both had operations ready for this machine; Job 8 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 8,
+          "tick": 82,
+          "job_id": 6,
+          "priority": 3,
+          "chosen": "assign_job_6",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 6 (priority 3, tick 82): dispatching Job 6's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 9,
+          "tick": 84,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign_job_7",
+          "runner_up": "assign_job_1",
+          "severity_score": 0.685,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.401,
+            "D": 0.625
+          },
+          "explanation_worthy": true,
+          "narration": "Job 7 (priority 2, tick 84): dispatching Job 7's next operation instead of dispatching Job 1's next operation. Job 7 and Job 1 both had operations ready for this machine; Job 7 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 10,
+          "tick": 91,
+          "job_id": 9,
+          "priority": 3,
+          "chosen": "assign_job_9",
+          "runner_up": "assign_job_4",
+          "severity_score": 0.747,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.532
+          },
+          "explanation_worthy": true,
+          "narration": "Job 9 (priority 3, tick 91): dispatching Job 9's next operation instead of dispatching Job 4's next operation. Job 9 and Job 4 both had operations ready for this machine; Job 9 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 11,
+          "tick": 134,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign_job_0",
+          "runner_up": "assign_job_8",
+          "severity_score": 0.611,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.401,
+            "D": 0.252
+          },
+          "explanation_worthy": false,
+          "narration": "Job 0 (priority 2, tick 134): dispatching Job 0's next operation instead of dispatching Job 8's next operation. Job 0 and Job 8 both had operations ready for this machine; Job 0 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 12,
+          "tick": 145,
+          "job_id": 3,
+          "priority": 3,
+          "chosen": "assign_job_3",
+          "runner_up": "assign_job_1",
+          "severity_score": 0.677,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.185
+          },
+          "explanation_worthy": true,
+          "narration": "Job 3 (priority 3, tick 145): dispatching Job 3's next operation instead of dispatching Job 1's next operation. Job 3 and Job 1 both had operations ready for this machine; Job 3 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 13,
+          "tick": 156,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign_job_7",
+          "runner_up": "assign_job_8",
+          "severity_score": 0.638,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.402,
+            "D": 0.389
+          },
+          "explanation_worthy": true,
+          "narration": "Job 7 (priority 2, tick 156): dispatching Job 7's next operation instead of dispatching Job 8's next operation. Job 7 and Job 8 both had operations ready for this machine; Job 7 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 14,
+          "tick": 160,
+          "job_id": 5,
+          "priority": 3,
+          "chosen": "assign_job_5",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 5 (priority 3, tick 160): dispatching Job 5's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 15,
+          "tick": 170,
+          "job_id": 9,
+          "priority": 3,
+          "chosen": "assign_job_9",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 9 (priority 3, tick 170): dispatching Job 9's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 16,
+          "tick": 171,
+          "job_id": 4,
+          "priority": 2,
+          "chosen": "assign_job_4",
+          "runner_up": "assign_job_2",
+          "severity_score": 0.639,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.402,
+            "D": 0.39
+          },
+          "explanation_worthy": true,
+          "narration": "Job 4 (priority 2, tick 171): dispatching Job 4's next operation instead of dispatching Job 2's next operation. Job 4 and Job 2 both had operations ready for this machine; Job 4 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 17,
+          "tick": 198,
+          "job_id": 6,
+          "priority": 3,
+          "chosen": "assign_job_6",
+          "runner_up": "assign_job_8",
+          "severity_score": 0.663,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.115
+          },
+          "explanation_worthy": true,
+          "narration": "Job 6 (priority 3, tick 198): dispatching Job 6's next operation instead of dispatching Job 8's next operation. Job 6 and Job 8 both had operations ready for this machine; Job 6 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 18,
+          "tick": 201,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign_job_0",
+          "runner_up": "assign_job_1",
+          "severity_score": 0.683,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.402,
+            "D": 0.61
+          },
+          "explanation_worthy": true,
+          "narration": "Job 0 (priority 2, tick 201): dispatching Job 0's next operation instead of dispatching Job 1's next operation. Job 0 and Job 1 both had operations ready for this machine; Job 0 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 19,
+          "tick": 206,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign_job_7",
+          "runner_up": "assign_job_2",
+          "severity_score": 0.624,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.402,
+            "D": 0.314
+          },
+          "explanation_worthy": true,
+          "narration": "Job 7 (priority 2, tick 206): dispatching Job 7's next operation instead of dispatching Job 2's next operation. Job 7 and Job 2 both had operations ready for this machine; Job 7 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility)."
+        },
+        {
+          "step_id": 20,
+          "tick": 214,
+          "job_id": 4,
+          "priority": 2,
+          "chosen": "assign_job_4",
+          "runner_up": null,
+          "severity_score": 0.561,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.402,
+            "D": 0.0
+          },
+          "explanation_worthy": false,
+          "narration": "Job 4 (priority 2, tick 214): dispatching Job 4's next operation. It was the only job with a ready operation for this machine at this moment. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 21,
+          "tick": 231,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign_job_2",
+          "runner_up": null,
+          "severity_score": 0.481,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.203,
+            "D": 0.0
+          },
+          "explanation_worthy": false,
+          "narration": "Job 2 (priority 1, tick 231): dispatching Job 2's next operation. It was the only job with a ready operation for this machine at this moment. (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 22,
+          "tick": 240,
+          "job_id": 3,
+          "priority": 3,
+          "chosen": "assign_job_3",
+          "runner_up": "assign_job_7",
+          "severity_score": 0.723,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.411
+          },
+          "explanation_worthy": true,
+          "narration": "Job 3 (priority 3, tick 240): dispatching Job 3's next operation instead of dispatching Job 7's next operation. Job 3 and Job 7 both had operations ready for this machine; Job 3 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 23,
+          "tick": 255,
+          "job_id": 5,
+          "priority": 3,
+          "chosen": "assign_job_5",
+          "runner_up": "assign_job_1",
+          "severity_score": 0.684,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.218
+          },
+          "explanation_worthy": true,
+          "narration": "Job 5 (priority 3, tick 255): dispatching Job 5's next operation instead of dispatching Job 1's next operation. Job 5 and Job 1 both had operations ready for this machine; Job 5 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 24,
+          "tick": 285,
+          "job_id": 6,
+          "priority": 3,
+          "chosen": "assign_job_6",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 6 (priority 3, tick 285): dispatching Job 6's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 25,
+          "tick": 286,
+          "job_id": 9,
+          "priority": 3,
+          "chosen": "assign_job_9",
+          "runner_up": "assign_job_4",
+          "severity_score": 0.776,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.601,
+            "D": 0.676
+          },
+          "explanation_worthy": true,
+          "narration": "Job 9 (priority 3, tick 286): dispatching Job 9's next operation instead of dispatching Job 4's next operation. Job 9 and Job 4 both had operations ready for this machine; Job 9 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 26,
+          "tick": 320,
+          "job_id": 7,
+          "priority": 2,
+          "chosen": "assign_job_7",
+          "runner_up": "assign_job_0",
+          "severity_score": 0.728,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.405,
+            "D": 0.827
+          },
+          "explanation_worthy": true,
+          "narration": "Job 7 (priority 2, tick 320): dispatching Job 7's next operation instead of dispatching Job 0's next operation. Job 7 and Job 0 both had operations ready for this machine; Job 7 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 27,
+          "tick": 347,
+          "job_id": 5,
+          "priority": 3,
+          "chosen": "assign_job_5",
+          "runner_up": null,
+          "severity_score": 0.641,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.602,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 5 (priority 3, tick 347): dispatching Job 5's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 28,
+          "tick": 348,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign_job_1",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 1 (priority 1, tick 348): dispatching Job 1's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 29,
+          "tick": 362,
+          "job_id": 4,
+          "priority": 2,
+          "chosen": "assign_job_4",
+          "runner_up": "assign_job_8",
+          "severity_score": 0.615,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.422,
+            "D": 0.228
+          },
+          "explanation_worthy": false,
+          "narration": "Job 4 (priority 2, tick 362): dispatching Job 4's next operation instead of dispatching Job 8's next operation. Job 4 and Job 8 both had operations ready for this machine; Job 4 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). (Not flagged by SCAA's severity gate -- shown here only because this condition displays every decision.)"
+        },
+        {
+          "step_id": 30,
+          "tick": 370,
+          "job_id": 9,
+          "priority": 3,
+          "chosen": "assign_job_9",
+          "runner_up": null,
+          "severity_score": 0.641,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.602,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 9 (priority 3, tick 370): dispatching Job 9's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 31,
+          "tick": 373,
+          "job_id": 3,
+          "priority": 3,
+          "chosen": "assign_job_3",
+          "runner_up": null,
+          "severity_score": 0.641,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.602,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 3 (priority 3, tick 373): dispatching Job 3's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 32,
+          "tick": 382,
+          "job_id": 8,
+          "priority": 1,
+          "chosen": "assign_job_8",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 8 (priority 1, tick 382): dispatching Job 8's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 33,
+          "tick": 404,
+          "job_id": 4,
+          "priority": 2,
+          "chosen": "assign_job_4",
+          "runner_up": "assign_job_0",
+          "severity_score": 0.872,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.8,
+            "D": 0.758
+          },
+          "explanation_worthy": true,
+          "narration": "Job 4 (priority 2, tick 404): dispatching Job 4's next operation instead of dispatching Job 0's next operation. Job 4 and Job 0 both had operations ready for this machine; Job 4 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 34,
+          "tick": 410,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign_job_1",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 1 (priority 1, tick 410): dispatching Job 1's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 35,
+          "tick": 442,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign_job_0",
+          "runner_up": "assign_job_8",
+          "severity_score": 0.844,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.8,
+            "D": 0.618
+          },
+          "explanation_worthy": true,
+          "narration": "Job 0 (priority 2, tick 442): dispatching Job 0's next operation instead of dispatching Job 8's next operation. Job 0 and Job 8 both had operations ready for this machine; Job 0 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 36,
+          "tick": 463,
+          "job_id": 3,
+          "priority": 3,
+          "chosen": "assign_job_3",
+          "runner_up": null,
+          "severity_score": 0.642,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.604,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 3 (priority 3, tick 463): dispatching Job 3's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 37,
+          "tick": 467,
+          "job_id": 6,
+          "priority": 3,
+          "chosen": "assign_job_6",
+          "runner_up": null,
+          "severity_score": 0.641,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.602,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 6 (priority 3, tick 467): dispatching Job 6's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 38,
+          "tick": 538,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign_job_1",
+          "runner_up": "assign_job_8",
+          "severity_score": 0.787,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.734
+          },
+          "explanation_worthy": true,
+          "narration": "Job 1 (priority 1, tick 538): dispatching Job 1's next operation instead of dispatching Job 8's next operation. Job 1 and Job 8 both had operations ready for this machine; Job 1 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 39,
+          "tick": 541,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign_job_0",
+          "runner_up": null,
+          "severity_score": 0.72,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.8,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 0 (priority 2, tick 541): dispatching Job 0's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 40,
+          "tick": 554,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign_job_1",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 1 (priority 1, tick 554): dispatching Job 1's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 41,
+          "tick": 555,
+          "job_id": 8,
+          "priority": 1,
+          "chosen": "assign_job_8",
+          "runner_up": "assign_job_2",
+          "severity_score": 0.777,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.685
+          },
+          "explanation_worthy": true,
+          "narration": "Job 8 (priority 1, tick 555): dispatching Job 8's next operation instead of dispatching Job 2's next operation. Job 8 and Job 2 both had operations ready for this machine; Job 8 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations). Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+        },
+        {
+          "step_id": 42,
+          "tick": 580,
+          "job_id": 8,
+          "priority": 1,
+          "chosen": "assign_job_8",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 8 (priority 1, tick 580): dispatching Job 8's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 43,
+          "tick": 581,
+          "job_id": 1,
+          "priority": 1,
+          "chosen": "assign_job_1",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 1 (priority 1, tick 581): dispatching Job 1's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 44,
+          "tick": 582,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign_job_2",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 2 (priority 1, tick 582): dispatching Job 2's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 45,
+          "tick": 596,
+          "job_id": 0,
+          "priority": 2,
+          "chosen": "assign_job_0",
+          "runner_up": null,
+          "severity_score": 0.72,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.8,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 0 (priority 2, tick 596): dispatching Job 0's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 46,
+          "tick": 631,
+          "job_id": 8,
+          "priority": 1,
+          "chosen": "assign_job_8",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 8 (priority 1, tick 631): dispatching Job 8's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 47,
+          "tick": 680,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign_job_2",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 2 (priority 1, tick 680): dispatching Job 2's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 48,
+          "tick": 730,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign_job_2",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 2 (priority 1, tick 730): dispatching Job 2's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        },
+        {
+          "step_id": 49,
+          "tick": 761,
+          "job_id": 2,
+          "priority": 1,
+          "chosen": "assign_job_2",
+          "runner_up": null,
+          "severity_score": 0.64,
+          "severity_components": {
+            "I": 1.0,
+            "F": 0.6,
+            "D": 0.0
+          },
+          "explanation_worthy": true,
+          "narration": "Job 2 (priority 1, tick 761): dispatching Job 2's next operation. It was the only job with a ready operation for this machine at this moment. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact)."
+        }
+      ]
+    }
+  },
+  "phase3_scenarios": {
+    "balanced": {
+      "scenario": "balanced",
+      "n_seeds": 20,
+      "aggregate": {
+        "gate_rate": {
+          "mean": 0.48625390933594836,
+          "std": 0.10618656069084981,
+          "ci95": 0.050987882182995735,
+          "n": 20
+        },
+        "audit_load_reduction": {
+          "mean": 0.5137460906640516,
+          "std": 0.10618656069084982,
+          "ci95": 0.050987882182995735,
+          "n": 20
+        },
+        "selection_diversity_vs_attribution": {
+          "mean": 0.7070410373080652,
+          "std": 0.1306847218166621,
+          "ci95": 0.06275122911745011,
+          "n": 20
+        },
+        "selection_diversity_vs_deviation_only": {
+          "mean": 0.6115584308192668,
+          "std": 0.097304844600708,
+          "ci95": 0.046723125036322345,
+          "n": 20
+        },
+        "selection_diversity_vs_random": {
+          "mean": 0.661328627942405,
+          "std": 0.13218826402670786,
+          "ci95": 0.06347318896400893,
+          "n": 20
+        },
+        "critical_coverage_gate": {
+          "mean": 0.5406547619047619,
+          "std": 0.2196118106203434,
+          "ci95": 0.1054515849562622,
+          "n": 20
+        },
+        "critical_coverage_attribution": {
+          "mean": 0.7500595238095238,
+          "std": 0.15004651347993062,
+          "ci95": 0.07204823191851657,
+          "n": 20
+        },
+        "critical_coverage_deviation_only": {
+          "mean": 0.584047619047619,
+          "std": 0.2614138798022936,
+          "ci95": 0.1255237952678857,
+          "n": 20
+        },
+        "critical_coverage_oracle_proxy": {
+          "mean": 0.6030357142857142,
+          "std": 0.18428766571810407,
+          "ci95": 0.0884898967089692,
+          "n": 20
+        },
+        "critical_coverage_random": {
+          "mean": 0.5630952380952381,
+          "std": 0.15704271701032937,
+          "ci95": 0.07540761750380534,
+          "n": 20
+        }
+      },
+      "per_seed": [
+        {
+          "n_total": 23,
+          "k": 11,
+          "gate_rate": 0.4782608695652174,
+          "audit_load_reduction": 0.5217391304347826,
+          "selection_diversity_vs_attribution": 0.7058823529411764,
+          "selection_diversity_vs_deviation_only": 0.5333333333333333,
+          "selection_diversity_vs_random": 0.7777777777777778,
+          "critical_coverage_gate": 0.6666666666666666,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.16666666666666666,
+          "critical_coverage_oracle_proxy": 0.6666666666666666,
+          "critical_coverage_random": 0.5,
+          "seed": 0
+        },
+        {
+          "n_total": 19,
+          "k": 11,
+          "gate_rate": 0.5789473684210527,
+          "audit_load_reduction": 0.42105263157894735,
+          "selection_diversity_vs_attribution": 0.7777777777777778,
+          "selection_diversity_vs_deviation_only": 0.7058823529411764,
+          "selection_diversity_vs_random": 0.625,
+          "critical_coverage_gate": 0.2,
+          "critical_coverage_attribution": 0.8,
+          "critical_coverage_deviation_only": 0.8,
+          "critical_coverage_oracle_proxy": 0.4,
+          "critical_coverage_random": 0.8,
+          "seed": 1
+        },
+        {
+          "n_total": 19,
+          "k": 13,
+          "gate_rate": 0.6842105263157895,
+          "audit_load_reduction": 0.3157894736842105,
+          "selection_diversity_vs_attribution": 0.375,
+          "selection_diversity_vs_deviation_only": 0.375,
+          "selection_diversity_vs_random": 0.5555555555555556,
+          "critical_coverage_gate": 0.8,
+          "critical_coverage_attribution": 0.8,
+          "critical_coverage_deviation_only": 0.8,
+          "critical_coverage_oracle_proxy": 0.8,
+          "critical_coverage_random": 0.6,
+          "seed": 2
+        },
+        {
+          "n_total": 27,
+          "k": 15,
+          "gate_rate": 0.5555555555555556,
+          "audit_load_reduction": 0.4444444444444444,
+          "selection_diversity_vs_attribution": 0.6363636363636364,
+          "selection_diversity_vs_deviation_only": 0.5714285714285714,
+          "selection_diversity_vs_random": 0.5714285714285714,
+          "critical_coverage_gate": 0.5714285714285714,
+          "critical_coverage_attribution": 0.7142857142857143,
+          "critical_coverage_deviation_only": 0.42857142857142855,
+          "critical_coverage_oracle_proxy": 0.5714285714285714,
+          "critical_coverage_random": 0.7142857142857143,
+          "seed": 3
+        },
+        {
+          "n_total": 27,
+          "k": 9,
+          "gate_rate": 0.3333333333333333,
+          "audit_load_reduction": 0.6666666666666667,
+          "selection_diversity_vs_attribution": 0.875,
+          "selection_diversity_vs_deviation_only": 0.6153846153846154,
+          "selection_diversity_vs_random": 0.7142857142857143,
+          "critical_coverage_gate": 0.14285714285714285,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 0.42857142857142855,
+          "critical_coverage_oracle_proxy": 0.7142857142857143,
+          "critical_coverage_random": 0.42857142857142855,
+          "seed": 4
+        },
+        {
+          "n_total": 25,
+          "k": 10,
+          "gate_rate": 0.4,
+          "audit_load_reduction": 0.6,
+          "selection_diversity_vs_attribution": 0.8235294117647058,
+          "selection_diversity_vs_deviation_only": 0.75,
+          "selection_diversity_vs_random": 0.6666666666666667,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.3333333333333333,
+          "critical_coverage_deviation_only": 0.3333333333333333,
+          "critical_coverage_oracle_proxy": 0.6666666666666666,
+          "critical_coverage_random": 0.5,
+          "seed": 5
+        },
+        {
+          "n_total": 21,
+          "k": 11,
+          "gate_rate": 0.5238095238095238,
+          "audit_load_reduction": 0.47619047619047616,
+          "selection_diversity_vs_attribution": 0.9,
+          "selection_diversity_vs_deviation_only": 0.4285714285714286,
+          "selection_diversity_vs_random": 0.5333333333333333,
+          "critical_coverage_gate": 0.2,
+          "critical_coverage_attribution": 0.8,
+          "critical_coverage_deviation_only": 0.2,
+          "critical_coverage_oracle_proxy": 0.2,
+          "critical_coverage_random": 0.6,
+          "seed": 6
+        },
+        {
+          "n_total": 29,
+          "k": 11,
+          "gate_rate": 0.3793103448275862,
+          "audit_load_reduction": 0.6206896551724138,
+          "selection_diversity_vs_attribution": 0.8421052631578947,
+          "selection_diversity_vs_deviation_only": 0.7058823529411764,
+          "selection_diversity_vs_random": 0.7058823529411764,
+          "critical_coverage_gate": 0.42857142857142855,
+          "critical_coverage_attribution": 0.7142857142857143,
+          "critical_coverage_deviation_only": 0.2857142857142857,
+          "critical_coverage_oracle_proxy": 0.42857142857142855,
+          "critical_coverage_random": 0.7142857142857143,
+          "seed": 7
+        },
+        {
+          "n_total": 28,
+          "k": 11,
+          "gate_rate": 0.39285714285714285,
+          "audit_load_reduction": 0.6071428571428572,
+          "selection_diversity_vs_attribution": 0.7058823529411764,
+          "selection_diversity_vs_deviation_only": 0.625,
+          "selection_diversity_vs_random": 0.7058823529411764,
+          "critical_coverage_gate": 0.5714285714285714,
+          "critical_coverage_attribution": 0.5714285714285714,
+          "critical_coverage_deviation_only": 0.5714285714285714,
+          "critical_coverage_oracle_proxy": 0.7142857142857143,
+          "critical_coverage_random": 0.5714285714285714,
+          "seed": 8
+        },
+        {
+          "n_total": 27,
+          "k": 14,
+          "gate_rate": 0.5185185185185185,
+          "audit_load_reduction": 0.4814814814814815,
+          "selection_diversity_vs_attribution": 0.6666666666666667,
+          "selection_diversity_vs_deviation_only": 0.6666666666666667,
+          "selection_diversity_vs_random": 0.6,
+          "critical_coverage_gate": 0.7142857142857143,
+          "critical_coverage_attribution": 0.7142857142857143,
+          "critical_coverage_deviation_only": 0.7142857142857143,
+          "critical_coverage_oracle_proxy": 0.7142857142857143,
+          "critical_coverage_random": 0.2857142857142857,
+          "seed": 9
+        },
+        {
+          "n_total": 25,
+          "k": 12,
+          "gate_rate": 0.48,
+          "audit_load_reduction": 0.52,
+          "selection_diversity_vs_attribution": 0.6666666666666667,
+          "selection_diversity_vs_deviation_only": 0.6666666666666667,
+          "selection_diversity_vs_random": 0.736842105263158,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 0.3333333333333333,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 10
+        },
+        {
+          "n_total": 28,
+          "k": 10,
+          "gate_rate": 0.35714285714285715,
+          "audit_load_reduction": 0.6428571428571428,
+          "selection_diversity_vs_attribution": 0.75,
+          "selection_diversity_vs_deviation_only": 0.75,
+          "selection_diversity_vs_random": 0.9473684210526316,
+          "critical_coverage_gate": 0.42857142857142855,
+          "critical_coverage_attribution": 0.7142857142857143,
+          "critical_coverage_deviation_only": 0.7142857142857143,
+          "critical_coverage_oracle_proxy": 0.5714285714285714,
+          "critical_coverage_random": 0.42857142857142855,
+          "seed": 11
+        },
+        {
+          "n_total": 26,
+          "k": 12,
+          "gate_rate": 0.46153846153846156,
+          "audit_load_reduction": 0.5384615384615384,
+          "selection_diversity_vs_attribution": 0.8,
+          "selection_diversity_vs_deviation_only": 0.6666666666666667,
+          "selection_diversity_vs_random": 0.8,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.5,
+          "critical_coverage_oracle_proxy": 0.6666666666666666,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 12
+        },
+        {
+          "n_total": 27,
+          "k": 14,
+          "gate_rate": 0.5185185185185185,
+          "audit_load_reduction": 0.4814814814814815,
+          "selection_diversity_vs_attribution": 0.7272727272727273,
+          "selection_diversity_vs_deviation_only": 0.5263157894736843,
+          "selection_diversity_vs_random": 0.6666666666666667,
+          "critical_coverage_gate": 0.7142857142857143,
+          "critical_coverage_attribution": 0.7142857142857143,
+          "critical_coverage_deviation_only": 0.5714285714285714,
+          "critical_coverage_oracle_proxy": 0.5714285714285714,
+          "critical_coverage_random": 0.2857142857142857,
+          "seed": 13
+        },
+        {
+          "n_total": 31,
+          "k": 11,
+          "gate_rate": 0.3548387096774194,
+          "audit_load_reduction": 0.6451612903225806,
+          "selection_diversity_vs_attribution": 0.7777777777777778,
+          "selection_diversity_vs_deviation_only": 0.5333333333333333,
+          "selection_diversity_vs_random": 0.7777777777777778,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.625,
+          "critical_coverage_oracle_proxy": 0.375,
+          "critical_coverage_random": 0.5,
+          "seed": 14
+        },
+        {
+          "n_total": 24,
+          "k": 15,
+          "gate_rate": 0.625,
+          "audit_load_reduction": 0.375,
+          "selection_diversity_vs_attribution": 0.5,
+          "selection_diversity_vs_deviation_only": 0.6363636363636364,
+          "selection_diversity_vs_random": 0.5,
+          "critical_coverage_gate": 0.3333333333333333,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_oracle_proxy": 0.6666666666666666,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 15
+        },
+        {
+          "n_total": 34,
+          "k": 11,
+          "gate_rate": 0.3235294117647059,
+          "audit_load_reduction": 0.6764705882352942,
+          "selection_diversity_vs_attribution": 0.8421052631578947,
+          "selection_diversity_vs_deviation_only": 0.7058823529411764,
+          "selection_diversity_vs_random": 0.8421052631578947,
+          "critical_coverage_gate": 0.375,
+          "critical_coverage_attribution": 0.625,
+          "critical_coverage_deviation_only": 0.125,
+          "critical_coverage_oracle_proxy": 0.5,
+          "critical_coverage_random": 0.25,
+          "seed": 16
+        },
+        {
+          "n_total": 23,
+          "k": 12,
+          "gate_rate": 0.5217391304347826,
+          "audit_load_reduction": 0.4782608695652174,
+          "selection_diversity_vs_attribution": 0.5882352941176471,
+          "selection_diversity_vs_deviation_only": 0.5882352941176471,
+          "selection_diversity_vs_random": 0.5,
+          "critical_coverage_gate": 0.6666666666666666,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 0.8333333333333334,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 17
+        },
+        {
+          "n_total": 22,
+          "k": 13,
+          "gate_rate": 0.5909090909090909,
+          "audit_load_reduction": 0.40909090909090906,
+          "selection_diversity_vs_attribution": 0.5555555555555556,
+          "selection_diversity_vs_deviation_only": 0.5555555555555556,
+          "selection_diversity_vs_random": 0.375,
+          "critical_coverage_gate": 0.6666666666666666,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_oracle_proxy": 0.6666666666666666,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 18
+        },
+        {
+          "n_total": 17,
+          "k": 11,
+          "gate_rate": 0.6470588235294118,
+          "audit_load_reduction": 0.3529411764705882,
+          "selection_diversity_vs_attribution": 0.625,
+          "selection_diversity_vs_deviation_only": 0.625,
+          "selection_diversity_vs_random": 0.625,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.75,
+          "seed": 19
+        }
+      ]
+    },
+    "high_contention": {
+      "scenario": "high_contention",
+      "n_seeds": 20,
+      "aggregate": {
+        "gate_rate": {
+          "mean": 0.3608675576448496,
+          "std": 0.049553262764678564,
+          "ci95": 0.023794121470648407,
+          "n": 20
+        },
+        "audit_load_reduction": {
+          "mean": 0.6391324423551504,
+          "std": 0.04955326276467857,
+          "ci95": 0.023794121470648407,
+          "n": 20
+        },
+        "selection_diversity_vs_attribution": {
+          "mean": 0.8294733294185986,
+          "std": 0.07964853305983843,
+          "ci95": 0.03824504714421391,
+          "n": 20
+        },
+        "selection_diversity_vs_deviation_only": {
+          "mean": 0.6648555685804561,
+          "std": 0.1030769127343712,
+          "ci95": 0.049494714284874064,
+          "n": 20
+        },
+        "selection_diversity_vs_random": {
+          "mean": 0.7500795142999042,
+          "std": 0.08442935573178391,
+          "ci95": 0.04054066743315651,
+          "n": 20
+        },
+        "critical_coverage_gate": {
+          "mean": 0.459541292041292,
+          "std": 0.07659448265045103,
+          "ci95": 0.036778575667582,
+          "n": 20
+        },
+        "critical_coverage_attribution": {
+          "mean": 0.4658008658008658,
+          "std": 0.1322934091355157,
+          "ci95": 0.063523676769482,
+          "n": 20
+        },
+        "critical_coverage_deviation_only": {
+          "mean": 0.4120962370962371,
+          "std": 0.14148772217896474,
+          "ci95": 0.06793853442343514,
+          "n": 20
+        },
+        "critical_coverage_oracle_proxy": {
+          "mean": 0.4462079587079587,
+          "std": 0.08299286652231845,
+          "ci95": 0.03985090460353997,
+          "n": 20
+        },
+        "critical_coverage_random": {
+          "mean": 0.32334082584082585,
+          "std": 0.1288683718306679,
+          "ci95": 0.06187906753234532,
+          "n": 20
+        }
+      },
+      "per_seed": [
+        {
+          "n_total": 40,
+          "k": 16,
+          "gate_rate": 0.4,
+          "audit_load_reduction": 0.6,
+          "selection_diversity_vs_attribution": 0.72,
+          "selection_diversity_vs_deviation_only": 0.47619047619047616,
+          "selection_diversity_vs_random": 0.7692307692307692,
+          "critical_coverage_gate": 0.4,
+          "critical_coverage_attribution": 0.6,
+          "critical_coverage_deviation_only": 0.3,
+          "critical_coverage_oracle_proxy": 0.5,
+          "critical_coverage_random": 0.2,
+          "seed": 0
+        },
+        {
+          "n_total": 51,
+          "k": 19,
+          "gate_rate": 0.37254901960784315,
+          "audit_load_reduction": 0.6274509803921569,
+          "selection_diversity_vs_attribution": 0.8484848484848485,
+          "selection_diversity_vs_deviation_only": 0.6428571428571428,
+          "selection_diversity_vs_random": 0.8484848484848485,
+          "critical_coverage_gate": 0.46153846153846156,
+          "critical_coverage_attribution": 0.38461538461538464,
+          "critical_coverage_deviation_only": 0.23076923076923078,
+          "critical_coverage_oracle_proxy": 0.46153846153846156,
+          "critical_coverage_random": 0.23076923076923078,
+          "seed": 1
+        },
+        {
+          "n_total": 49,
+          "k": 14,
+          "gate_rate": 0.2857142857142857,
+          "audit_load_reduction": 0.7142857142857143,
+          "selection_diversity_vs_attribution": 0.782608695652174,
+          "selection_diversity_vs_deviation_only": 0.782608695652174,
+          "selection_diversity_vs_random": 0.9230769230769231,
+          "critical_coverage_gate": 0.4166666666666667,
+          "critical_coverage_attribution": 0.5833333333333334,
+          "critical_coverage_deviation_only": 0.4166666666666667,
+          "critical_coverage_oracle_proxy": 0.4166666666666667,
+          "critical_coverage_random": 0.16666666666666666,
+          "seed": 2
+        },
+        {
+          "n_total": 54,
+          "k": 18,
+          "gate_rate": 0.3333333333333333,
+          "audit_load_reduction": 0.6666666666666667,
+          "selection_diversity_vs_attribution": 0.6666666666666667,
+          "selection_diversity_vs_deviation_only": 0.8,
+          "selection_diversity_vs_random": 0.6153846153846154,
+          "critical_coverage_gate": 0.35714285714285715,
+          "critical_coverage_attribution": 0.2857142857142857,
+          "critical_coverage_deviation_only": 0.6428571428571429,
+          "critical_coverage_oracle_proxy": 0.35714285714285715,
+          "critical_coverage_random": 0.35714285714285715,
+          "seed": 3
+        },
+        {
+          "n_total": 43,
+          "k": 15,
+          "gate_rate": 0.3488372093023256,
+          "audit_load_reduction": 0.6511627906976745,
+          "selection_diversity_vs_attribution": 0.75,
+          "selection_diversity_vs_deviation_only": 0.6363636363636364,
+          "selection_diversity_vs_random": 0.6956521739130435,
+          "critical_coverage_gate": 0.5454545454545454,
+          "critical_coverage_attribution": 0.5454545454545454,
+          "critical_coverage_deviation_only": 0.45454545454545453,
+          "critical_coverage_oracle_proxy": 0.5454545454545454,
+          "critical_coverage_random": 0.6363636363636364,
+          "seed": 4
+        },
+        {
+          "n_total": 40,
+          "k": 14,
+          "gate_rate": 0.35,
+          "audit_load_reduction": 0.65,
+          "selection_diversity_vs_attribution": 0.8333333333333334,
+          "selection_diversity_vs_deviation_only": 0.8333333333333334,
+          "selection_diversity_vs_random": 0.782608695652174,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.5,
+          "critical_coverage_deviation_only": 0.7,
+          "critical_coverage_oracle_proxy": 0.4,
+          "critical_coverage_random": 0.2,
+          "seed": 5
+        },
+        {
+          "n_total": 46,
+          "k": 13,
+          "gate_rate": 0.2826086956521739,
+          "audit_load_reduction": 0.7173913043478262,
+          "selection_diversity_vs_attribution": 0.9166666666666666,
+          "selection_diversity_vs_deviation_only": 0.7,
+          "selection_diversity_vs_random": 0.7619047619047619,
+          "critical_coverage_gate": 0.4166666666666667,
+          "critical_coverage_attribution": 0.4166666666666667,
+          "critical_coverage_deviation_only": 0.25,
+          "critical_coverage_oracle_proxy": 0.4166666666666667,
+          "critical_coverage_random": 0.25,
+          "seed": 6
+        },
+        {
+          "n_total": 46,
+          "k": 16,
+          "gate_rate": 0.34782608695652173,
+          "audit_load_reduction": 0.6521739130434783,
+          "selection_diversity_vs_attribution": 0.896551724137931,
+          "selection_diversity_vs_deviation_only": 0.72,
+          "selection_diversity_vs_random": 0.7692307692307692,
+          "critical_coverage_gate": 0.4166666666666667,
+          "critical_coverage_attribution": 0.5833333333333334,
+          "critical_coverage_deviation_only": 0.3333333333333333,
+          "critical_coverage_oracle_proxy": 0.4166666666666667,
+          "critical_coverage_random": 0.25,
+          "seed": 7
+        },
+        {
+          "n_total": 49,
+          "k": 15,
+          "gate_rate": 0.30612244897959184,
+          "audit_load_reduction": 0.6938775510204082,
+          "selection_diversity_vs_attribution": 0.9655172413793104,
+          "selection_diversity_vs_deviation_only": 0.75,
+          "selection_diversity_vs_random": 0.8,
+          "critical_coverage_gate": 0.4166666666666667,
+          "critical_coverage_attribution": 0.4166666666666667,
+          "critical_coverage_deviation_only": 0.25,
+          "critical_coverage_oracle_proxy": 0.25,
+          "critical_coverage_random": 0.16666666666666666,
+          "seed": 8
+        },
+        {
+          "n_total": 50,
+          "k": 18,
+          "gate_rate": 0.36,
+          "audit_load_reduction": 0.64,
+          "selection_diversity_vs_attribution": 0.875,
+          "selection_diversity_vs_deviation_only": 0.7142857142857143,
+          "selection_diversity_vs_random": 0.7142857142857143,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.4166666666666667,
+          "critical_coverage_deviation_only": 0.5,
+          "critical_coverage_oracle_proxy": 0.5,
+          "critical_coverage_random": 0.16666666666666666,
+          "seed": 9
+        },
+        {
+          "n_total": 44,
+          "k": 16,
+          "gate_rate": 0.36363636363636365,
+          "audit_load_reduction": 0.6363636363636364,
+          "selection_diversity_vs_attribution": 0.896551724137931,
+          "selection_diversity_vs_deviation_only": 0.7692307692307692,
+          "selection_diversity_vs_random": 0.7692307692307692,
+          "critical_coverage_gate": 0.36363636363636365,
+          "critical_coverage_attribution": 0.45454545454545453,
+          "critical_coverage_deviation_only": 0.36363636363636365,
+          "critical_coverage_oracle_proxy": 0.36363636363636365,
+          "critical_coverage_random": 0.2727272727272727,
+          "seed": 10
+        },
+        {
+          "n_total": 49,
+          "k": 15,
+          "gate_rate": 0.30612244897959184,
+          "audit_load_reduction": 0.6938775510204082,
+          "selection_diversity_vs_attribution": 0.75,
+          "selection_diversity_vs_deviation_only": 0.5714285714285714,
+          "selection_diversity_vs_random": 0.5,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.4166666666666667,
+          "critical_coverage_deviation_only": 0.3333333333333333,
+          "critical_coverage_oracle_proxy": 0.5,
+          "critical_coverage_random": 0.4166666666666667,
+          "seed": 11
+        },
+        {
+          "n_total": 43,
+          "k": 19,
+          "gate_rate": 0.4418604651162791,
+          "audit_load_reduction": 0.5581395348837209,
+          "selection_diversity_vs_attribution": 0.7741935483870968,
+          "selection_diversity_vs_deviation_only": 0.6896551724137931,
+          "selection_diversity_vs_random": 0.7333333333333334,
+          "critical_coverage_gate": 0.5454545454545454,
+          "critical_coverage_attribution": 0.45454545454545453,
+          "critical_coverage_deviation_only": 0.6363636363636364,
+          "critical_coverage_oracle_proxy": 0.5454545454545454,
+          "critical_coverage_random": 0.5454545454545454,
+          "seed": 12
+        },
+        {
+          "n_total": 40,
+          "k": 18,
+          "gate_rate": 0.45,
+          "audit_load_reduction": 0.55,
+          "selection_diversity_vs_attribution": 0.875,
+          "selection_diversity_vs_deviation_only": 0.56,
+          "selection_diversity_vs_random": 0.7586206896551724,
+          "critical_coverage_gate": 0.6,
+          "critical_coverage_attribution": 0.4,
+          "critical_coverage_deviation_only": 0.5,
+          "critical_coverage_oracle_proxy": 0.5,
+          "critical_coverage_random": 0.4,
+          "seed": 13
+        },
+        {
+          "n_total": 45,
+          "k": 15,
+          "gate_rate": 0.3333333333333333,
+          "audit_load_reduction": 0.6666666666666667,
+          "selection_diversity_vs_attribution": 0.8888888888888888,
+          "selection_diversity_vs_deviation_only": 0.5714285714285714,
+          "selection_diversity_vs_random": 0.8,
+          "critical_coverage_gate": 0.5454545454545454,
+          "critical_coverage_attribution": 0.2727272727272727,
+          "critical_coverage_deviation_only": 0.45454545454545453,
+          "critical_coverage_oracle_proxy": 0.5454545454545454,
+          "critical_coverage_random": 0.36363636363636365,
+          "seed": 14
+        },
+        {
+          "n_total": 51,
+          "k": 17,
+          "gate_rate": 0.3333333333333333,
+          "audit_load_reduction": 0.6666666666666667,
+          "selection_diversity_vs_attribution": 0.9375,
+          "selection_diversity_vs_deviation_only": 0.7407407407407407,
+          "selection_diversity_vs_random": 0.8275862068965517,
+          "critical_coverage_gate": 0.46153846153846156,
+          "critical_coverage_attribution": 0.6153846153846154,
+          "critical_coverage_deviation_only": 0.3076923076923077,
+          "critical_coverage_oracle_proxy": 0.46153846153846156,
+          "critical_coverage_random": 0.3076923076923077,
+          "seed": 15
+        },
+        {
+          "n_total": 45,
+          "k": 16,
+          "gate_rate": 0.35555555555555557,
+          "audit_load_reduction": 0.6444444444444444,
+          "selection_diversity_vs_attribution": 0.7692307692307692,
+          "selection_diversity_vs_deviation_only": 0.5454545454545454,
+          "selection_diversity_vs_random": 0.7692307692307692,
+          "critical_coverage_gate": 0.36363636363636365,
+          "critical_coverage_attribution": 0.2727272727272727,
+          "critical_coverage_deviation_only": 0.2727272727272727,
+          "critical_coverage_oracle_proxy": 0.36363636363636365,
+          "critical_coverage_random": 0.2727272727272727,
+          "seed": 16
+        },
+        {
+          "n_total": 49,
+          "k": 19,
+          "gate_rate": 0.3877551020408163,
+          "audit_load_reduction": 0.6122448979591837,
+          "selection_diversity_vs_attribution": 0.7333333333333334,
+          "selection_diversity_vs_deviation_only": 0.7333333333333334,
+          "selection_diversity_vs_random": 0.7333333333333334,
+          "critical_coverage_gate": 0.4166666666666667,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.25,
+          "critical_coverage_oracle_proxy": 0.4166666666666667,
+          "critical_coverage_random": 0.5,
+          "seed": 17
+        },
+        {
+          "n_total": 41,
+          "k": 19,
+          "gate_rate": 0.4634146341463415,
+          "audit_load_reduction": 0.5365853658536586,
+          "selection_diversity_vs_attribution": 0.8823529411764706,
+          "selection_diversity_vs_deviation_only": 0.5384615384615384,
+          "selection_diversity_vs_random": 0.6896551724137931,
+          "critical_coverage_gate": 0.6,
+          "critical_coverage_attribution": 0.5,
+          "critical_coverage_deviation_only": 0.5,
+          "critical_coverage_oracle_proxy": 0.6,
+          "critical_coverage_random": 0.4,
+          "seed": 18
+        },
+        {
+          "n_total": 43,
+          "k": 17,
+          "gate_rate": 0.3953488372093023,
+          "audit_load_reduction": 0.6046511627906976,
+          "selection_diversity_vs_attribution": 0.8275862068965517,
+          "selection_diversity_vs_deviation_only": 0.5217391304347826,
+          "selection_diversity_vs_random": 0.7407407407407407,
+          "critical_coverage_gate": 0.36363636363636365,
+          "critical_coverage_attribution": 0.36363636363636365,
+          "critical_coverage_deviation_only": 0.5454545454545454,
+          "critical_coverage_oracle_proxy": 0.36363636363636365,
+          "critical_coverage_random": 0.36363636363636365,
+          "seed": 19
+        }
+      ]
+    },
+    "safety_critical": {
+      "scenario": "safety_critical",
+      "n_seeds": 20,
+      "aggregate": {
+        "gate_rate": {
+          "mean": 0.8003555600960787,
+          "std": 0.07450899074723014,
+          "ci95": 0.03577717949500418,
+          "n": 20
+        },
+        "audit_load_reduction": {
+          "mean": 0.19964443990392133,
+          "std": 0.07450899074723014,
+          "ci95": 0.03577717949500418,
+          "n": 20
+        },
+        "selection_diversity_vs_attribution": {
+          "mean": 0.347538115443806,
+          "std": 0.14558948843716432,
+          "ci95": 0.06990809039506281,
+          "n": 20
+        },
+        "selection_diversity_vs_deviation_only": {
+          "mean": 0.21512912318384117,
+          "std": 0.099819173475571,
+          "ci95": 0.04793043699375602,
+          "n": 20
+        },
+        "selection_diversity_vs_random": {
+          "mean": 0.3257235706853085,
+          "std": 0.1310009766717029,
+          "ci95": 0.06290308604909675,
+          "n": 20
+        },
+        "critical_coverage_gate": {
+          "mean": 0.9276785714285715,
+          "std": 0.12716764238086464,
+          "ci95": 0.061062423766434254,
+          "n": 20
+        },
+        "critical_coverage_attribution": {
+          "mean": 0.8507142857142858,
+          "std": 0.15290108402689184,
+          "ci95": 0.07341891862109522,
+          "n": 20
+        },
+        "critical_coverage_deviation_only": {
+          "mean": 0.8530952380952381,
+          "std": 0.13818572569039286,
+          "ci95": 0.06635300602104029,
+          "n": 20
+        },
+        "critical_coverage_oracle_proxy": {
+          "mean": 0.9348214285714286,
+          "std": 0.10978028652505789,
+          "ci95": 0.05271349103820728,
+          "n": 20
+        },
+        "critical_coverage_random": {
+          "mean": 0.7551785714285715,
+          "std": 0.15786956560685775,
+          "ci95": 0.07580464758509506,
+          "n": 20
+        }
+      },
+      "per_seed": [
+        {
+          "n_total": 19,
+          "k": 17,
+          "gate_rate": 0.8947368421052632,
+          "audit_load_reduction": 0.10526315789473684,
+          "selection_diversity_vs_attribution": 0.11111111111111116,
+          "selection_diversity_vs_deviation_only": 0.21052631578947367,
+          "selection_diversity_vs_random": 0.21052631578947367,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.8,
+          "critical_coverage_deviation_only": 0.8,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.8,
+          "seed": 0
+        },
+        {
+          "n_total": 18,
+          "k": 14,
+          "gate_rate": 0.7777777777777778,
+          "audit_load_reduction": 0.2222222222222222,
+          "selection_diversity_vs_attribution": 0.4444444444444444,
+          "selection_diversity_vs_deviation_only": 0.4444444444444444,
+          "selection_diversity_vs_random": 0.3529411764705882,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.5,
+          "seed": 1
+        },
+        {
+          "n_total": 19,
+          "k": 17,
+          "gate_rate": 0.8947368421052632,
+          "audit_load_reduction": 0.10526315789473684,
+          "selection_diversity_vs_attribution": 0.11111111111111116,
+          "selection_diversity_vs_deviation_only": 0.11111111111111116,
+          "selection_diversity_vs_random": 0.21052631578947367,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 1.0,
+          "seed": 2
+        },
+        {
+          "n_total": 24,
+          "k": 21,
+          "gate_rate": 0.875,
+          "audit_load_reduction": 0.125,
+          "selection_diversity_vs_attribution": 0.25,
+          "selection_diversity_vs_deviation_only": 0.09090909090909094,
+          "selection_diversity_vs_random": 0.09090909090909094,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 1.0,
+          "seed": 3
+        },
+        {
+          "n_total": 27,
+          "k": 21,
+          "gate_rate": 0.7777777777777778,
+          "audit_load_reduction": 0.2222222222222222,
+          "selection_diversity_vs_attribution": 0.31999999999999995,
+          "selection_diversity_vs_deviation_only": 0.17391304347826086,
+          "selection_diversity_vs_random": 0.4444444444444444,
+          "critical_coverage_gate": 0.5714285714285714,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 0.5714285714285714,
+          "critical_coverage_oracle_proxy": 0.7142857142857143,
+          "critical_coverage_random": 0.5714285714285714,
+          "seed": 4
+        },
+        {
+          "n_total": 25,
+          "k": 22,
+          "gate_rate": 0.88,
+          "audit_load_reduction": 0.12,
+          "selection_diversity_vs_attribution": 0.24,
+          "selection_diversity_vs_deviation_only": 0.08695652173913049,
+          "selection_diversity_vs_random": 0.24,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.8333333333333334,
+          "seed": 5
+        },
+        {
+          "n_total": 16,
+          "k": 13,
+          "gate_rate": 0.8125,
+          "audit_load_reduction": 0.1875,
+          "selection_diversity_vs_attribution": 0.375,
+          "selection_diversity_vs_deviation_only": 0.1428571428571429,
+          "selection_diversity_vs_random": 0.375,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.75,
+          "seed": 6
+        },
+        {
+          "n_total": 25,
+          "k": 21,
+          "gate_rate": 0.84,
+          "audit_load_reduction": 0.16000000000000003,
+          "selection_diversity_vs_attribution": 0.31999999999999995,
+          "selection_diversity_vs_deviation_only": 0.09090909090909094,
+          "selection_diversity_vs_random": 0.25,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 7
+        },
+        {
+          "n_total": 26,
+          "k": 18,
+          "gate_rate": 0.6923076923076923,
+          "audit_load_reduction": 0.3076923076923077,
+          "selection_diversity_vs_attribution": 0.5,
+          "selection_diversity_vs_deviation_only": 0.2857142857142857,
+          "selection_diversity_vs_random": 0.36363636363636365,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.8333333333333334,
+          "seed": 8
+        },
+        {
+          "n_total": 25,
+          "k": 18,
+          "gate_rate": 0.72,
+          "audit_load_reduction": 0.28,
+          "selection_diversity_vs_attribution": 0.36363636363636365,
+          "selection_diversity_vs_deviation_only": 0.36363636363636365,
+          "selection_diversity_vs_random": 0.4347826086956522,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 9
+        },
+        {
+          "n_total": 25,
+          "k": 22,
+          "gate_rate": 0.88,
+          "audit_load_reduction": 0.12,
+          "selection_diversity_vs_attribution": 0.16666666666666663,
+          "selection_diversity_vs_deviation_only": 0.16666666666666663,
+          "selection_diversity_vs_random": 0.24,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 10
+        },
+        {
+          "n_total": 28,
+          "k": 21,
+          "gate_rate": 0.75,
+          "audit_load_reduction": 0.25,
+          "selection_diversity_vs_attribution": 0.5,
+          "selection_diversity_vs_deviation_only": 0.25,
+          "selection_diversity_vs_random": 0.3846153846153846,
+          "critical_coverage_gate": 0.8571428571428571,
+          "critical_coverage_attribution": 0.7142857142857143,
+          "critical_coverage_deviation_only": 0.8571428571428571,
+          "critical_coverage_oracle_proxy": 0.8571428571428571,
+          "critical_coverage_random": 0.8571428571428571,
+          "seed": 11
+        },
+        {
+          "n_total": 24,
+          "k": 20,
+          "gate_rate": 0.8333333333333334,
+          "audit_load_reduction": 0.16666666666666663,
+          "selection_diversity_vs_attribution": 0.26086956521739135,
+          "selection_diversity_vs_deviation_only": 0.18181818181818177,
+          "selection_diversity_vs_random": 0.33333333333333337,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 12
+        },
+        {
+          "n_total": 25,
+          "k": 18,
+          "gate_rate": 0.72,
+          "audit_load_reduction": 0.28,
+          "selection_diversity_vs_attribution": 0.4347826086956522,
+          "selection_diversity_vs_deviation_only": 0.19999999999999996,
+          "selection_diversity_vs_random": 0.4347826086956522,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_oracle_proxy": 0.8333333333333334,
+          "critical_coverage_random": 0.5,
+          "seed": 13
+        },
+        {
+          "n_total": 26,
+          "k": 18,
+          "gate_rate": 0.6923076923076923,
+          "audit_load_reduction": 0.3076923076923077,
+          "selection_diversity_vs_attribution": 0.56,
+          "selection_diversity_vs_deviation_only": 0.19999999999999996,
+          "selection_diversity_vs_random": 0.56,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_oracle_proxy": 0.8333333333333334,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 14
+        },
+        {
+          "n_total": 24,
+          "k": 19,
+          "gate_rate": 0.7916666666666666,
+          "audit_load_reduction": 0.20833333333333337,
+          "selection_diversity_vs_attribution": 0.41666666666666663,
+          "selection_diversity_vs_deviation_only": 0.34782608695652173,
+          "selection_diversity_vs_random": 0.2727272727272727,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.5,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.8333333333333334,
+          "seed": 15
+        },
+        {
+          "n_total": 32,
+          "k": 21,
+          "gate_rate": 0.65625,
+          "audit_load_reduction": 0.34375,
+          "selection_diversity_vs_attribution": 0.6875,
+          "selection_diversity_vs_deviation_only": 0.31999999999999995,
+          "selection_diversity_vs_random": 0.6,
+          "critical_coverage_gate": 0.625,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_oracle_proxy": 0.625,
+          "critical_coverage_random": 0.625,
+          "seed": 16
+        },
+        {
+          "n_total": 22,
+          "k": 17,
+          "gate_rate": 0.7727272727272727,
+          "audit_load_reduction": 0.2272727272727273,
+          "selection_diversity_vs_attribution": 0.38095238095238093,
+          "selection_diversity_vs_deviation_only": 0.30000000000000004,
+          "selection_diversity_vs_random": 0.38095238095238093,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 0.6666666666666666,
+          "seed": 17
+        },
+        {
+          "n_total": 22,
+          "k": 19,
+          "gate_rate": 0.8636363636363636,
+          "audit_load_reduction": 0.13636363636363635,
+          "selection_diversity_vs_attribution": 0.2727272727272727,
+          "selection_diversity_vs_deviation_only": 0.09999999999999998,
+          "selection_diversity_vs_random": 0.09999999999999998,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_oracle_proxy": 0.8333333333333334,
+          "critical_coverage_random": 1.0,
+          "seed": 18
+        },
+        {
+          "n_total": 17,
+          "k": 15,
+          "gate_rate": 0.8823529411764706,
+          "audit_load_reduction": 0.11764705882352944,
+          "selection_diversity_vs_attribution": 0.23529411764705888,
+          "selection_diversity_vs_deviation_only": 0.23529411764705888,
+          "selection_diversity_vs_random": 0.23529411764705888,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_oracle_proxy": 1.0,
+          "critical_coverage_random": 1.0,
+          "seed": 19
+        }
+      ]
+    }
+  },
+  "cross_domain": {
+    "delivery": {
+      "domain": "delivery",
+      "n_runs": 15,
+      "per_run": [
+        {
+          "n_total": 16,
+          "k": 10,
+          "audit_load_reduction": 0.375,
+          "selection_diversity_vs_attribution": 0.5714285714285714,
+          "critical_coverage_gate": 0.75,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_random": 0.25
+        },
+        {
+          "n_total": 16,
+          "k": 8,
+          "audit_load_reduction": 0.5,
+          "selection_diversity_vs_attribution": 0.7692307692307692,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_random": 0.25
+        },
+        {
+          "n_total": 18,
+          "k": 13,
+          "audit_load_reduction": 0.2777777777777778,
+          "selection_diversity_vs_attribution": 0.375,
+          "critical_coverage_gate": 0.75,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_random": 0.25
+        },
+        {
+          "n_total": 21,
+          "k": 13,
+          "audit_load_reduction": 0.38095238095238093,
+          "selection_diversity_vs_attribution": 0.5555555555555556,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.6,
+          "critical_coverage_deviation_only": 0.6,
+          "critical_coverage_random": 0.8
+        },
+        {
+          "n_total": 25,
+          "k": 8,
+          "audit_load_reduction": 0.6799999999999999,
+          "selection_diversity_vs_attribution": 0.9333333333333333,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.3333333333333333
+        },
+        {
+          "n_total": 25,
+          "k": 7,
+          "audit_load_reduction": 0.72,
+          "selection_diversity_vs_attribution": 0.9230769230769231,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.5,
+          "critical_coverage_deviation_only": 0.5,
+          "critical_coverage_random": 0.16666666666666666
+        },
+        {
+          "n_total": 15,
+          "k": 6,
+          "audit_load_reduction": 0.6,
+          "selection_diversity_vs_attribution": 0.9090909090909091,
+          "critical_coverage_gate": 0.75,
+          "critical_coverage_attribution": 0.5,
+          "critical_coverage_deviation_only": 0.5,
+          "critical_coverage_random": 0.25
+        },
+        {
+          "n_total": 22,
+          "k": 10,
+          "audit_load_reduction": 0.5454545454545454,
+          "selection_diversity_vs_attribution": 0.6666666666666667,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.16666666666666666
+        },
+        {
+          "n_total": 25,
+          "k": 12,
+          "audit_load_reduction": 0.52,
+          "selection_diversity_vs_attribution": 0.8,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.3333333333333333,
+          "critical_coverage_deviation_only": 0.3333333333333333,
+          "critical_coverage_random": 0.3333333333333333
+        },
+        {
+          "n_total": 25,
+          "k": 12,
+          "audit_load_reduction": 0.52,
+          "selection_diversity_vs_attribution": 0.8,
+          "critical_coverage_gate": 0.6666666666666666,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.5
+        },
+        {
+          "n_total": 26,
+          "k": 15,
+          "audit_load_reduction": 0.42307692307692313,
+          "selection_diversity_vs_attribution": 0.5714285714285714,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.5
+        },
+        {
+          "n_total": 25,
+          "k": 11,
+          "audit_load_reduction": 0.56,
+          "selection_diversity_vs_attribution": 0.7058823529411764,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.5
+        },
+        {
+          "n_total": 23,
+          "k": 11,
+          "audit_load_reduction": 0.5217391304347826,
+          "selection_diversity_vs_attribution": 0.8421052631578947,
+          "critical_coverage_gate": 0.3333333333333333,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.6666666666666666
+        },
+        {
+          "n_total": 21,
+          "k": 11,
+          "audit_load_reduction": 0.47619047619047616,
+          "selection_diversity_vs_attribution": 0.625,
+          "critical_coverage_gate": 0.6,
+          "critical_coverage_attribution": 0.8,
+          "critical_coverage_deviation_only": 0.8,
+          "critical_coverage_random": 0.8
+        },
+        {
+          "n_total": 24,
+          "k": 12,
+          "audit_load_reduction": 0.5,
+          "selection_diversity_vs_attribution": 0.736842105263158,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.5
+        }
+      ],
+      "aggregate": {
+        "audit_load_reduction": {
+          "mean": 0.5066794155924591,
+          "std": 0.11037318256482645
+        },
+        "selection_diversity_vs_attribution": {
+          "mean": 0.7189760680782352,
+          "std": 0.15388105364778848
+        },
+        "critical_coverage_gate": {
+          "mean": 0.7566666666666667,
+          "std": 0.19970348389920864
+        },
+        "critical_coverage_attribution": {
+          "mean": 0.6711111111111111,
+          "std": 0.15085763053739784
+        },
+        "critical_coverage_deviation_only": {
+          "mean": 0.66,
+          "std": 0.14450426111876938
+        },
+        "critical_coverage_random": {
+          "mean": 0.4177777777777778,
+          "std": 0.20561260469600726
+        }
+      }
+    },
+    "cloud": {
+      "domain": "cloud",
+      "n_runs": 15,
+      "per_run": [
+        {
+          "n_total": 20,
+          "k": 14,
+          "audit_load_reduction": 0.30000000000000004,
+          "selection_diversity_vs_attribution": 0.3529411764705882,
+          "critical_coverage_gate": 0.6,
+          "critical_coverage_attribution": 1.0,
+          "critical_coverage_deviation_only": 1.0,
+          "critical_coverage_random": 0.8
+        },
+        {
+          "n_total": 24,
+          "k": 10,
+          "audit_load_reduction": 0.5833333333333333,
+          "selection_diversity_vs_attribution": 0.6666666666666667,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_random": 0.5
+        },
+        {
+          "n_total": 23,
+          "k": 9,
+          "audit_load_reduction": 0.6086956521739131,
+          "selection_diversity_vs_attribution": 0.7142857142857143,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_random": 0.3333333333333333
+        },
+        {
+          "n_total": 27,
+          "k": 15,
+          "audit_load_reduction": 0.4444444444444444,
+          "selection_diversity_vs_attribution": 0.5,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.7142857142857143,
+          "critical_coverage_deviation_only": 0.7142857142857143,
+          "critical_coverage_random": 0.8571428571428571
+        },
+        {
+          "n_total": 26,
+          "k": 5,
+          "audit_load_reduction": 0.8076923076923077,
+          "selection_diversity_vs_attribution": 1.0,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.5,
+          "critical_coverage_deviation_only": 0.5,
+          "critical_coverage_random": 0.3333333333333333
+        },
+        {
+          "n_total": 23,
+          "k": 7,
+          "audit_load_reduction": 0.6956521739130435,
+          "selection_diversity_vs_attribution": 0.8333333333333334,
+          "critical_coverage_gate": 0.5,
+          "critical_coverage_attribution": 0.8333333333333334,
+          "critical_coverage_deviation_only": 0.8333333333333334,
+          "critical_coverage_random": 0.16666666666666666
+        },
+        {
+          "n_total": 25,
+          "k": 12,
+          "audit_load_reduction": 0.52,
+          "selection_diversity_vs_attribution": 0.736842105263158,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.5
+        },
+        {
+          "n_total": 30,
+          "k": 14,
+          "audit_load_reduction": 0.5333333333333333,
+          "selection_diversity_vs_attribution": 0.7272727272727273,
+          "critical_coverage_gate": 0.75,
+          "critical_coverage_attribution": 0.625,
+          "critical_coverage_deviation_only": 0.625,
+          "critical_coverage_random": 0.5
+        },
+        {
+          "n_total": 29,
+          "k": 13,
+          "audit_load_reduction": 0.5517241379310345,
+          "selection_diversity_vs_attribution": 0.8695652173913043,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.14285714285714285,
+          "critical_coverage_deviation_only": 0.14285714285714285,
+          "critical_coverage_random": 0.5714285714285714
+        },
+        {
+          "n_total": 24,
+          "k": 10,
+          "audit_load_reduction": 0.5833333333333333,
+          "selection_diversity_vs_attribution": 0.75,
+          "critical_coverage_gate": 1.0,
+          "critical_coverage_attribution": 0.6666666666666666,
+          "critical_coverage_deviation_only": 0.6666666666666666,
+          "critical_coverage_random": 0.16666666666666666
+        },
+        {
+          "n_total": 30,
+          "k": 14,
+          "audit_load_reduction": 0.5333333333333333,
+          "selection_diversity_vs_attribution": 0.7272727272727273,
+          "critical_coverage_gate": 0.625,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_random": 0.75
+        },
+        {
+          "n_total": 28,
+          "k": 12,
+          "audit_load_reduction": 0.5714285714285714,
+          "selection_diversity_vs_attribution": 0.6666666666666667,
+          "critical_coverage_gate": 0.8571428571428571,
+          "critical_coverage_attribution": 0.8571428571428571,
+          "critical_coverage_deviation_only": 0.8571428571428571,
+          "critical_coverage_random": 0.2857142857142857
+        },
+        {
+          "n_total": 29,
+          "k": 13,
+          "audit_load_reduction": 0.5517241379310345,
+          "selection_diversity_vs_attribution": 0.8181818181818181,
+          "critical_coverage_gate": 0.8571428571428571,
+          "critical_coverage_attribution": 0.5714285714285714,
+          "critical_coverage_deviation_only": 0.5714285714285714,
+          "critical_coverage_random": 0.42857142857142855
+        },
+        {
+          "n_total": 21,
+          "k": 8,
+          "audit_load_reduction": 0.6190476190476191,
+          "selection_diversity_vs_attribution": 0.6666666666666667,
+          "critical_coverage_gate": 0.6,
+          "critical_coverage_attribution": 0.8,
+          "critical_coverage_deviation_only": 0.8,
+          "critical_coverage_random": 0.6
+        },
+        {
+          "n_total": 30,
+          "k": 17,
+          "audit_load_reduction": 0.43333333333333335,
+          "selection_diversity_vs_attribution": 0.64,
+          "critical_coverage_gate": 0.625,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_random": 0.625
+        }
+      ],
+      "aggregate": {
+        "audit_load_reduction": {
+          "mean": 0.5558050474152423,
+          "std": 0.11157154626261455
+        },
+        "selection_diversity_vs_attribution": {
+          "mean": 0.7113129879647581,
+          "std": 0.14640344108131464
+        },
+        "critical_coverage_gate": {
+          "mean": 0.7387301587301587,
+          "std": 0.18003572473792473
+        },
+        "critical_coverage_attribution": {
+          "mean": 0.702936507936508,
+          "std": 0.19285364814914538
+        },
+        "critical_coverage_deviation_only": {
+          "mean": 0.702936507936508,
+          "std": 0.19285364814914538
+        },
+        "critical_coverage_random": {
+          "mean": 0.49452380952380953,
+          "std": 0.2064180898457562
+        }
+      }
+    },
+    "taillard_jssp": {
+      "domain": "taillard_jssp",
+      "n_runs": 5,
+      "per_run": [
+        {
+          "n_total": 50,
+          "k": 44,
+          "audit_load_reduction": 0.12,
+          "selection_diversity_vs_attribution": 0.24,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.5833333333333334,
+          "critical_coverage_deviation_only": 0.5833333333333334,
+          "critical_coverage_random": 0.8333333333333334,
+          "instance": "la01.txt"
+        },
+        {
+          "n_total": 50,
+          "k": 41,
+          "audit_load_reduction": 0.18000000000000005,
+          "selection_diversity_vs_attribution": 0.36,
+          "critical_coverage_gate": 0.8333333333333334,
+          "critical_coverage_attribution": 0.75,
+          "critical_coverage_deviation_only": 0.75,
+          "critical_coverage_random": 0.8333333333333334,
+          "instance": "la02.txt"
+        },
+        {
+          "n_total": 225,
+          "k": 123,
+          "audit_load_reduction": 0.45333333333333337,
+          "selection_diversity_vs_attribution": 0.6408839779005524,
+          "critical_coverage_gate": 0.5178571428571429,
+          "critical_coverage_attribution": 0.42857142857142855,
+          "critical_coverage_deviation_only": 0.4107142857142857,
+          "critical_coverage_random": 0.6607142857142857,
+          "instance": "ta01.txt"
+        },
+        {
+          "n_total": 225,
+          "k": 131,
+          "audit_load_reduction": 0.4177777777777778,
+          "selection_diversity_vs_attribution": 0.6063829787234043,
+          "critical_coverage_gate": 0.4642857142857143,
+          "critical_coverage_attribution": 0.48214285714285715,
+          "critical_coverage_deviation_only": 0.48214285714285715,
+          "critical_coverage_random": 0.5178571428571429,
+          "instance": "ta02.txt"
+        },
+        {
+          "n_total": 225,
+          "k": 117,
+          "audit_load_reduction": 0.48,
+          "selection_diversity_vs_attribution": 0.6235294117647059,
+          "critical_coverage_gate": 0.42857142857142855,
+          "critical_coverage_attribution": 0.39285714285714285,
+          "critical_coverage_deviation_only": 0.4107142857142857,
+          "critical_coverage_random": 0.48214285714285715,
+          "instance": "ta03.txt"
+        }
+      ],
+      "aggregate": {
+        "audit_load_reduction": {
+          "mean": 0.33022222222222225,
+          "std": 0.14967685356736746
+        },
+        "selection_diversity_vs_attribution": {
+          "mean": 0.4941592736777325,
+          "std": 0.16337354653812455
+        },
+        "critical_coverage_gate": {
+          "mean": 0.6154761904761905,
+          "std": 0.18013600304169275
+        },
+        "critical_coverage_attribution": {
+          "mean": 0.5273809523809524,
+          "std": 0.12852732929776933
+        },
+        "critical_coverage_deviation_only": {
+          "mean": 0.5273809523809524,
+          "std": 0.12803016580481755
+        },
+        "critical_coverage_random": {
+          "mean": 0.6654761904761906,
+          "std": 0.14951736413163105
+        }
+      }
+    }
+  }
+}

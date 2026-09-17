@@ -1,0 +1,15 @@
+1. job=14 category=tied_machines
+   expected answer (agent rationale): Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate.
+   gate status: FLAGGED, driving_component=I, I=0.775 F=0.6571428571428571 D=0.6011644791901566
+2. job=9 category=assign_over_defer
+   expected answer (agent rationale): The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately.
+   gate status: FLAGGED, driving_component=I, I=1.0 F=0.48 D=0.2644818865464632
+3. job=5 category=tied_machines
+   expected answer (agent rationale): Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate.
+   gate status: FLAGGED, driving_component=I, I=0.8500000000000001 F=0.4444444444444444 D=0.6011644791901566
+4. job=4 category=tied_machines
+   expected answer (agent rationale): Machines 1 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate.
+   gate status: FLAGGED, driving_component=I, I=0.7000000000000001 F=0.65 D=0.6011644791901566
+5. job=23 category=tied_machines
+   expected answer (agent rationale): Machines 0 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate.
+   gate status: FLAGGED, driving_component=I, I=1.0 F=0.6799999999999999 D=0.6011644791901566

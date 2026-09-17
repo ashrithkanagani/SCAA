@@ -60,27 +60,81 @@ def _run_full_trajectory(env_config: EnvironmentConfig, weights: SeverityWeights
                           agent=None):
     agent = agent or ScoringAgent()
     attribution_config = attribution_config or AttributionConfig()
-    traj = run_trajectory(env_config, agent)
+    traj, env = run_trajectory(env_config, agent, return_env=True)
     compute_attribution(traj, agent, env_config, job_schedule=None, attribution_config=attribution_config)
     calib = calibrate_deviation(env_config, agent, n_seeds=n_calib_seeds)
     apply_severity_gate(traj, weights, calib)
+    traj._env = env  # stashed for compute_realized_outcome_contribution; not part of the public schema
     return traj
 
 
-def critical_decision_coverage(trajectory, selection_ids: set, top_fraction: float = 0.25) -> float:
+def compute_realized_outcome_contribution(trajectory) -> dict:
     """
-    Proxy ground truth for "high-stakes decision": top `top_fraction` of
-    steps by I * job_duration (i.e. the most consequential-to-undo
-    commitments in absolute terms, independent of the gate's own score).
-    Reports what fraction of that proxy ground-truth set a given selection
-    captures. This is an internal proxy, not an external human-labeled
-    ground truth -- reported as such in every output.
+    Realized Outcome Contribution (ROC): for each job, the penalty it
+    ACTUALLY contributed to the trajectory's final outcome -- realized
+    lateness times the environment's SLA penalty rate, plus realized
+    reassignment penalty. Computed entirely from what happened in the
+    simulation (env.jobs[*].finish_tick, .deadline, .n_reassignments),
+    never from the I, F, or D formulas.
+
+    This replaces the original "top-quartile by I * duration" ground truth
+    used by critical_decision_coverage() below. That proxy was partially
+    circular: it was defined using I, the same quantity Irreversibility-only
+    ablation variants are then scored against, mechanically advantaging any
+    I-heavy selection regardless of whether I actually contributes useful
+    signal. ROC has no such relationship to I, F, or D and was verified
+    empirically (see PHASE_5_METRIC_REVISION.md) to remove this circularity:
+    Irreversibility-only ablation drops from a trivial ~1.0 to a value
+    comparable to the other single-component variants once scored against
+    ROC instead.
+
+    Requires a trajectory produced by _run_full_trajectory() (which stashes
+    the environment on `traj._env` for exactly this purpose).
     """
-    scored = sorted(
-        trajectory.steps,
-        key=lambda s: (s.severity_components or {}).get("I", 0.0) * s.job_duration,
-        reverse=True,
-    )
+    env = getattr(trajectory, "_env", None)
+    if env is None:
+        raise ValueError(
+            "compute_realized_outcome_contribution requires a trajectory produced by "
+            "_run_full_trajectory() (env not found on trajectory._env)"
+        )
+    roc = {}
+    for job_id, job in env.jobs.items():
+        contribution = 0.0
+        if job.finish_tick is not None and job.finish_tick > job.deadline:
+            lateness = job.finish_tick - job.deadline
+            contribution += lateness * env.config.sla_violation_penalty
+        contribution += job.n_reassignments * env.config.reassignment_penalty
+        roc[job_id] = contribution
+    return roc
+
+
+def critical_decision_coverage(trajectory, selection_ids: set, top_fraction: float = 0.25,
+                                roc_override: dict = None) -> float:
+    """
+    Ground truth for "high-stakes decision": the top `top_fraction` of
+    decision steps ranked by their job's Realized Outcome Contribution (ROC)
+    -- the penalty that job actually contributed to the trajectory's outcome
+    (realized lateness, realized reassignments), computed independently of
+    the severity gate's own I/F/D formulas. Reports what fraction of that
+    ground-truth set a given selection captures.
+
+    `roc_override`: pass a pre-computed {job_id: contribution} dict directly
+    if the trajectory came from a domain with different field names than
+    Domain 1's (e.g. delivery's Order.n_reroutes vs. scheduling's
+    Job.n_reassignments) -- see domains/common.py's
+    compute_realized_outcome_contribution_generic(). If omitted, this
+    function computes ROC itself from `trajectory._env` using Domain 1's
+    field names (compute_realized_outcome_contribution(), above).
+
+    NOTE: this is still an internally-computed ground truth (derived from
+    each simulator's own outcome metric), not an externally human-labeled
+    one -- the pilot human study remains the independent check on whether
+    "realized outcome cost" matches what a human auditor considers
+    consequential. It is no longer circular with respect to the gate's own
+    I/F/D scoring, which the previous I*duration proxy was.
+    """
+    roc = roc_override if roc_override is not None else compute_realized_outcome_contribution(trajectory)
+    scored = sorted(trajectory.steps, key=lambda s: roc.get(s.job_id, 0.0), reverse=True)
     n_critical = max(1, int(round(top_fraction * len(scored))))
     critical_ids = _ids(scored[:n_critical])
     if not critical_ids:
@@ -439,6 +493,41 @@ def ablation_study(env_config: EnvironmentConfig, base_weights: SeverityWeights 
     return out
 
 
+def ablation_study_multiseed(scenario_name: str = "balanced", n_seeds: int = 20,
+                              base_weights: SeverityWeights = None) -> dict:
+    """
+    Runs ablation_study() across n_seeds independent seeds and aggregates
+    mean/std per variant. NECESSARY, not optional: single-seed ablation
+    under the ROC ground truth (critical_decision_coverage) is noisy enough
+    that the full gate can score WORSE than a single component alone on an
+    individual seed (verified empirically -- e.g. seed 4 of the balanced
+    scenario). A single-seed ablation table is not a trustworthy basis for
+    claims about which component "matters most"; this aggregation is.
+    """
+    base_weights = base_weights or SeverityWeights()
+    per_seed_results = []
+    for seed in range(n_seeds):
+        cfg = get_scenario(scenario_name, seed=seed)
+        per_seed_results.append(ablation_study(cfg, base_weights))
+
+    variant_names = list(per_seed_results[0].keys())
+    aggregate = {}
+    for name in variant_names:
+        cov_vals = [r[name]["critical_coverage"] for r in per_seed_results]
+        aggregate[name] = {
+            "critical_coverage_mean": statistics.mean(cov_vals),
+            "critical_coverage_std": statistics.pstdev(cov_vals) if len(cov_vals) > 1 else 0.0,
+        }
+        if name != "full_gate":
+            delta_vals = [r[name]["coverage_delta_vs_full"] for r in per_seed_results]
+            jaccard_vals = [r[name]["jaccard_vs_full_gate"] for r in per_seed_results]
+            aggregate[name]["coverage_delta_vs_full_mean"] = statistics.mean(delta_vals)
+            aggregate[name]["coverage_delta_vs_full_std"] = statistics.pstdev(delta_vals) if len(delta_vals) > 1 else 0.0
+            aggregate[name]["jaccard_vs_full_gate_mean"] = statistics.mean(jaccard_vals)
+
+    return {"scenario": scenario_name, "n_seeds": n_seeds, "aggregate": aggregate, "per_seed": per_seed_results}
+
+
 def run_full_evaluation(n_seeds: int = 20, output_dir: str = "outputs/evaluation") -> dict:
     os.makedirs(output_dir, exist_ok=True)
     weights = SeverityWeights()
@@ -468,8 +557,10 @@ def run_full_evaluation(n_seeds: int = 20, output_dir: str = "outputs/evaluation
     print("[evaluation] robustness to input noise (balanced, seed=42) ...")
     results["sensitivity"]["robustness_to_noise"] = robustness_to_input_noise(default_cfg, weights)
 
-    print("[evaluation] ablation study, incl. pairwise (balanced, seed=42) ...")
+    print("[evaluation] ablation study, single-seed=42 (kept for the existing visualize.py chart) ...")
     results["ablation"] = ablation_study(default_cfg, weights)
+    print(f"[evaluation] ablation study, multi-seed (n={n_seeds}) -- the number to actually report ...")
+    results["ablation_multiseed"] = ablation_study_multiseed("balanced", n_seeds=n_seeds, base_weights=weights)
 
     print("[evaluation] cross-agent validation (balanced, 10 seeds, ScoringAgent vs GreedyEDFAgent) ...")
     results["cross_agent"] = cross_agent_validation("balanced", n_seeds=min(n_seeds, 10), weights=weights)

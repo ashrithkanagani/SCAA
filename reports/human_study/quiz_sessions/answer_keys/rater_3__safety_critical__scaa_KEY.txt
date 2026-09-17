@@ -1,5 +1,0 @@
-1. job=0 chosen=assign->M0 runner_up=assign->M1 driving_component=I I=0.775 F=0.7 D=0.6062065887317382
-2. job=2 chosen=assign->M2 runner_up=assign->M3 driving_component=I I=0.775 F=0.5 D=0.6062065887317382
-3. job=15 chosen=assign->M0 runner_up=assign->M1 driving_component=I I=0.775 F=0.6571428571428571 D=0.6062065887317382
-4. job=3 chosen=assign->M0 runner_up=assign->M1 driving_component=I I=0.925 F=0.45714285714285713 D=0.6062065887317382
-5. job=14 chosen=assign->M2 runner_up=assign->M3 driving_component=I I=0.775 F=0.7 D=0.6062065887317382

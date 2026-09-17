@@ -1,0 +1,34 @@
+AUDIT SESSION: rater_1 | domain=delivery | condition=scaa
+Number of decisions shown: 9 (of 24 total)
+Start a timer now. Read the following, then answer the 5 questions below.
+======================================================================
+
+Job 4 (priority 3, tick 7): dispatching Vehicle 1 instead of dispatching Vehicle 3. Vehicles 1 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 5 (priority 2, tick 9): dispatching Vehicle 2 instead of dispatching Vehicle 3. Vehicles 2 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility).
+Job 8 (priority 3, tick 17): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 11 (priority 2, tick 24): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility).
+Job 12 (priority 3, tick 27): dispatching Vehicle 2 instead of dispatching Vehicle 3. Vehicles 2 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 16 (priority 2, tick 34): dispatching Vehicle 2 instead of dispatching Vehicle 3. Vehicles 2 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility).
+Job 20 (priority 2, tick 44): dispatching Vehicle 1 instead of dispatching Vehicle 2. Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility).
+Job 21 (priority 3, tick 48): dispatching Vehicle 0 instead of dispatching Vehicle 2. Vehicles 0 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 23 (priority 3, tick 54): dispatching Vehicle 0 instead of dispatching Vehicle 1. Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+
+======================================================================
+QUIZ (answer briefly, then record your total time):
+
+1. Why did the agent choose 'assign->M2' for order 5 (tick 9) over 'assign->M3'?
+   Your answer: ______________________
+
+2. Why did the agent choose 'assign->M0' for order 8 (tick 17) over 'assign->M1'?
+   Your answer: ______________________
+
+3. Why did the agent choose 'assign->M0' for order 23 (tick 54) over 'assign->M1'?
+   Your answer: ______________________
+
+4. Why did the agent choose 'assign->M1' for order 11 (tick 24) over 'assign->M2'?
+   Your answer: ______________________
+
+5. Why did the agent choose 'assign->M0' for order 21 (tick 48) over 'assign->M2'?
+   Your answer: ______________________
+
+Total time taken (mm:ss): ______

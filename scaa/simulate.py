@@ -28,7 +28,8 @@ def run_trajectory(
     job_schedule: Optional[list] = None,
     override_step_id: Optional[int] = None,
     override_action: Optional[dict] = None,
-) -> Trajectory:
+    return_env: bool = False,
+):
     """
     Run the agent in a fresh environment until completion.
 
@@ -37,6 +38,13 @@ def run_trajectory(
     override_action instead of the agent's own chosen action. All other steps
     proceed exactly as the agent would normally choose -- this is the
     drop/hold-out counterfactual used by attribution.py.
+
+    If return_env=True, returns (trajectory, env) instead of just trajectory
+    -- opt-in, defaults to False, so every existing caller is unaffected.
+    Added so evaluation.py can read realized per-job outcomes (actual
+    lateness, actual reassignment count) after the run completes, for the
+    Realized Outcome Contribution ground truth used by
+    critical_decision_coverage(), without duplicating this loop.
     """
     env = SchedulingEnvironment(env_config, job_schedule=job_schedule)
     trajectory = Trajectory()
@@ -83,4 +91,6 @@ def run_trajectory(
         env.advance_tick()
 
     trajectory.final_outcome = env.outcome_metrics()
+    if return_env:
+        return trajectory, env
     return trajectory

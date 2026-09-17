@@ -242,7 +242,7 @@
       },
       "severity_score": 0.6602328958380314,
       "explanation_worthy": true,
-      "narration": "Job 4 (priority 3, tick 7): assigning it to Machine 1 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 4 (priority 3, tick 7): assigning it to Machine 1 instead of assigning it to Machine 3. Machines 1 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 5,
@@ -288,7 +288,7 @@
       },
       "severity_score": 0.6380106736158092,
       "explanation_worthy": true,
-      "narration": "Job 5 (priority 2, tick 9): assigning it to Machine 2 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 5 (priority 2, tick 9): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 6,
@@ -463,7 +463,7 @@
       },
       "severity_score": 0.6448963773092927,
       "explanation_worthy": true,
-      "narration": "Job 9 (priority 2, tick 13): assigning it to Machine 1 instead of deferring it to the next cycle. Flagged because the commitment would be hard to undo (high irreversibility)."
+      "narration": "Job 9 (priority 2, tick 13): assigning it to Machine 1 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. Flagged for audit because the commitment would be hard to undo (high irreversibility)."
     },
     {
       "step_id": 10,
@@ -731,7 +731,7 @@
       },
       "severity_score": 0.6930900386951743,
       "explanation_worthy": true,
-      "narration": "Job 14 (priority 3, tick 23): assigning it to Machine 2 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 14 (priority 3, tick 23): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 16,
@@ -779,7 +779,7 @@
       },
       "severity_score": 0.6835662291713648,
       "explanation_worthy": true,
-      "narration": "Job 15 (priority 3, tick 25): assigning it to Machine 0 instead of assigning it to Machine 1. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 15 (priority 3, tick 25): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 17,
@@ -924,7 +924,7 @@
       },
       "severity_score": 0.6662328958380314,
       "explanation_worthy": true,
-      "narration": "Job 18 (priority 2, tick 31): assigning it to Machine 1 instead of assigning it to Machine 2. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 18 (priority 2, tick 31): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 20,
@@ -970,7 +970,7 @@
       },
       "severity_score": 0.6230900386951742,
       "explanation_worthy": true,
-      "narration": "Job 19 (priority 1, tick 32): assigning it to Machine 2 instead of assigning it to Machine 3. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 19 (priority 1, tick 32): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 21,
@@ -1153,7 +1153,7 @@
       },
       "severity_score": 0.6625405881457237,
       "explanation_worthy": true,
-      "narration": "Job 22 (priority 2, tick 42): assigning it to Machine 1 instead of assigning it to Machine 2. Flagged because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 22 (priority 2, tick 42): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 25,
@@ -1201,7 +1201,7 @@
       },
       "severity_score": 0.7922328958380312,
       "explanation_worthy": true,
-      "narration": "Job 23 (priority 3, tick 46): assigning it to Machine 0 instead of assigning it to Machine 2. Flagged because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
+      "narration": "Job 23 (priority 3, tick 46): assigning it to Machine 0 instead of assigning it to Machine 2. Machines 0 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation)."
     },
     {
       "step_id": 26,

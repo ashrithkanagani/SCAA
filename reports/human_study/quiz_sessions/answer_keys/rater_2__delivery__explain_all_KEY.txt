@@ -1,0 +1,15 @@
+1. job=4 category=tied_machines
+   expected answer (agent rationale): Vehicles 1 and 3 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate.
+   gate status: FLAGGED, driving_component=I, I=0.7000000000000001 F=0.6799999999999999 D=0.5
+2. job=18 category=tied_machines
+   expected answer (agent rationale): Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.925 F=0.22857142857142856 D=0.5
+3. job=10 category=tied_machines
+   expected answer (agent rationale): Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.8500000000000001 F=0.4444444444444444 D=0.5
+4. job=3 category=tied_machines
+   expected answer (agent rationale): Vehicles 0 and 1 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 0 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.925 F=0.22857142857142856 D=0.5
+5. job=15 category=tied_machines
+   expected answer (agent rationale): Vehicles 1 and 2 were both free and scored identically for this order -- the dispatch policy does not distinguish between otherwise-idle vehicles -- so Vehicle 1 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.8500000000000001 F=0.22666666666666666 D=0.5

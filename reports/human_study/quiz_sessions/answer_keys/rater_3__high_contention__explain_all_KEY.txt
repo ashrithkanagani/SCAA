@@ -1,5 +1,0 @@
-1. job=5 chosen=reject runner_up=defer driving_component=F I=0.6 F=0.8 D=0.718961485964204
-2. job=2 chosen=reject runner_up=defer driving_component=D I=0.6 F=0.6 D=0.718961485964204
-3. job=11 chosen=assign->M0 runner_up=defer driving_component=I I=0.775 F=0.4666666666666666 D=0.46262112922193876
-4. job=14 chosen=defer runner_up=reject driving_component=D I=0.1 F=0.6 D=0.6402107698088189
-5. job=13 chosen=assign->M1 runner_up=defer driving_component=F I=0.775 F=0.8 D=0.13658272005215932

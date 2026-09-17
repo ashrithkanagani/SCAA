@@ -1,0 +1,15 @@
+1. job=7 category=assign_over_defer
+   expected answer (agent rationale): The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately.
+   gate status: not flagged, driving_component=n/a, I=1.0 F=0.4444444444444444 D=0.15714183033044626
+2. job=17 category=defer_over_assign
+   expected answer (agent rationale): The job's deadline was not yet close enough to justify committing a machine now, so the agent preferred to wait and re-evaluate next cycle.
+   gate status: not flagged, driving_component=n/a, I=0.1 F=0.23076923076923075 D=0.5845352659826321
+3. job=11 category=other
+   expected answer (agent rationale): The job was not yet urgent, but also not clearly unsalvageable, so waiting scored higher than rejecting it outright.
+   gate status: not flagged, driving_component=n/a, I=0.1 F=0.25 D=0.15813297952472694
+4. job=12 category=tied_machines
+   expected answer (agent rationale): Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate.
+   gate status: not flagged, driving_component=n/a, I=0.775 F=0.4444444444444444 D=0.6011644791901566
+5. job=17 category=assign_over_defer
+   expected answer (agent rationale): The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately.
+   gate status: not flagged, driving_component=n/a, I=0.8500000000000001 F=0.24 D=0.5575387791678257

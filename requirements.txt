@@ -1,3 +1,16 @@
+# Core (required for everything: Phases 1-4)
 numpy>=1.24
 scipy>=1.10
 pytest>=7.0
+matplotlib>=3.7
+
+# Optional (only if you want the LLM narrator instead of the default
+# deterministic TemplateNarrator -- see reports/RUN_AND_TEST_GUIDE.md)
+# requests>=2.31
+
+# No other dependencies. The dashboard (dashboard/index.html) is a
+# self-contained HTML file with no build step -- Chart.js is loaded from a
+# CDN at runtime, nothing to install locally.
+#
+# Real benchmark data (data/taillard/*.txt) ships bundled in this
+# repository -- no download or additional package needed to use it.

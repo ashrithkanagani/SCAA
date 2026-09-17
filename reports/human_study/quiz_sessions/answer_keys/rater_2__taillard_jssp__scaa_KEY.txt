@@ -1,0 +1,15 @@
+1. job=8 category=solo_ready
+   expected answer (agent rationale): It was the only job with a ready operation for this machine at this moment.
+   gate status: FLAGGED, driving_component=I, I=1.0 F=0.6 D=0.0
+2. job=0 category=job_competition
+   expected answer (agent rationale): Job 0 and Job 8 both had operations ready for this machine; Job 0 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations).
+   gate status: FLAGGED, driving_component=I, I=1.0 F=0.8 D=0.617532343540096
+3. job=5 category=solo_ready
+   expected answer (agent rationale): It was the only job with a ready operation for this machine at this moment.
+   gate status: FLAGGED, driving_component=I, I=1.0 F=0.6021978021978022 D=0.0
+4. job=4 category=job_competition
+   expected answer (agent rationale): Job 4 and Job 2 both had operations ready for this machine; Job 4 was dispatched first under the shortest-processing-time rule (with job priority tier as the tie-break for near-equal operation durations).
+   gate status: FLAGGED, driving_component=I, I=1.0 F=0.4019138755980861 D=0.3904404343883633
+5. job=5 category=solo_ready
+   expected answer (agent rationale): It was the only job with a ready operation for this machine at this moment.
+   gate status: FLAGGED, driving_component=I, I=1.0 F=0.60084388185654 D=0.0

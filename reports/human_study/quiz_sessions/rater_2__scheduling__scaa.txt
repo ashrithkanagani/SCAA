@@ -1,0 +1,34 @@
+AUDIT SESSION: rater_2 | domain=scheduling | condition=scaa
+Number of decisions shown: 9 (of 27 total)
+Start a timer now. Read the following, then answer the 5 questions below.
+======================================================================
+
+Job 4 (priority 3, tick 7): assigning it to Machine 1 instead of assigning it to Machine 3. Machines 1 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 5 (priority 2, tick 9): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 9 (priority 2, tick 13): assigning it to Machine 1 instead of deferring it to the next cycle. The job's priority and closing deadline made assigning it now score higher than waiting a cycle, so the agent committed a machine immediately. Flagged for audit because the commitment would be hard to undo (high irreversibility).
+Job 14 (priority 3, tick 23): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 15 (priority 3, tick 25): assigning it to Machine 0 instead of assigning it to Machine 1. Machines 0 and 1 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 18 (priority 2, tick 31): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 19 (priority 1, tick 32): assigning it to Machine 2 instead of assigning it to Machine 3. Machines 2 and 3 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 22 (priority 2, tick 42): assigning it to Machine 1 instead of assigning it to Machine 2. Machines 1 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+Job 23 (priority 3, tick 46): assigning it to Machine 0 instead of assigning it to Machine 2. Machines 0 and 2 were both free and scored identically for this job -- the scheduling policy does not distinguish between otherwise-idle machines -- so Machine 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact) and this was an unusually close call relative to the agent's typical decisions (high deviation).
+
+======================================================================
+QUIZ (answer briefly, then record your total time):
+
+1. Why did the agent choose 'assign->M2' for job 14 (tick 23) over 'assign->M3'?
+   Your answer: ______________________
+
+2. Why did the agent choose 'assign->M1' for job 9 (tick 13) over 'defer'?
+   Your answer: ______________________
+
+3. Why did the agent choose 'assign->M2' for job 5 (tick 9) over 'assign->M3'?
+   Your answer: ______________________
+
+4. Why did the agent choose 'assign->M1' for job 4 (tick 7) over 'assign->M3'?
+   Your answer: ______________________
+
+5. Why did the agent choose 'assign->M0' for job 23 (tick 46) over 'assign->M2'?
+   Your answer: ______________________
+
+Total time taken (mm:ss): ______

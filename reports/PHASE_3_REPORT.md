@@ -1,5 +1,7 @@
 # Phase 3 Report — Full Evaluation, Statistical Rigor, Cross-Agent Validation
 
+> **⚠️ Coverage numbers in this report are SUPERSEDED.** The `critical_decision_coverage` metric was revised after this report was written (fixing a circularity that made Irreversibility-only ablation trivially perfect). See `METRIC_REVISION_ADDENDUM.md` for the full account and `FINAL_RESEARCH_REPORT.md` Section 6 for the corrected numbers. Everything in this report that does NOT depend on `critical_decision_coverage` — noise robustness (Spearman 0.991), runtime scaling (~O(n^1.95)), the statistical-testing methodology itself — is unaffected and still accurate.
+
 **Project:** SCAA (Selective Causal Auditing for Agentic Systems)
 **Phase:** 3 of 3
 **Status:** Complete (automatic experiments). Human-study infrastructure delivered; results PENDING your team's input. 44/44 unit tests passing.

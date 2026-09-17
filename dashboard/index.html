@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCAA — Cross-Domain Audit Console</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg: #0b0e11;
+    --panel: #12161b;
+    --panel-2: #171c22;
+    --line: #232a32;
+    --text: #d8dee5;
+    --text-dim: #7c8894;
+    --accent: #e0a458;
+    --accent-2: #d64550;
+    --ok: #4caf7d;
+    --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); min-height: 100vh;
+  }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px; border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #0d1115, #0b0e11);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .brand { display: flex; align-items: baseline; gap: 12px; }
+  .brand .mark {
+    font-family: var(--mono); font-weight: 600; font-size: 20px; letter-spacing: 2px;
+    color: var(--accent); border: 1px solid var(--accent); padding: 3px 8px; border-radius: 3px;
+  }
+  .brand h1 { font-size: 15px; font-weight: 600; margin: 0; color: var(--text); letter-spacing: 0.3px; }
+  .brand .sub { font-size: 12px; color: var(--text-dim); font-family: var(--mono); }
+
+  .loader-controls { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; }
+  .loader-controls input[type=file] {
+    color: var(--text-dim); font-family: var(--mono); font-size: 12px;
+    background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px;
+  }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim); display: inline-block; }
+  .status-dot.live { background: var(--ok); box-shadow: 0 0 6px var(--ok); }
+
+  .tabs {
+    display: flex; gap: 2px; padding: 0 28px; border-bottom: 1px solid var(--line);
+    background: var(--bg); overflow-x: auto;
+  }
+  .tab {
+    padding: 12px 18px; font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);
+    cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; user-select: none;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 26px 28px 60px; }
+  .empty-state {
+    text-align: center; padding: 90px 20px; color: var(--text-dim); font-family: var(--mono); font-size: 13px;
+  }
+  .empty-state .big { font-size: 15px; color: var(--text); margin-bottom: 10px; }
+
+  .grid-kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 22px; }
+  .kpi {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px;
+  }
+  .kpi .label { font-family: var(--mono); font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.6px; }
+  .kpi .value { font-size: 26px; font-weight: 700; margin-top: 6px; font-family: var(--mono); }
+  .kpi .value.accent { color: var(--accent); }
+  .kpi .value.ok { color: var(--ok); }
+  .kpi .foot { font-size: 11.5px; color: var(--text-dim); margin-top: 4px; }
+
+  .panel {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+    padding: 18px 20px; margin-bottom: 20px;
+  }
+  .panel h2 {
+    font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-dim);
+    margin: 0 0 14px; font-family: var(--mono); font-weight: 600;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .desc { font-size: 13px; color: var(--text-dim); line-height: 1.55; margin-bottom: 4px; }
+
+  .chart-box { height: 260px; }
+
+  .log-controls { display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 11.5px; }
+  .toggle {
+    background: var(--panel-2); border: 1px solid var(--line); border-radius: 20px;
+    padding: 4px 4px; display: flex; gap: 2px; cursor: pointer;
+  }
+  .toggle button {
+    background: transparent; border: none; color: var(--text-dim); font-family: var(--mono);
+    font-size: 11px; padding: 5px 12px; border-radius: 16px; cursor: pointer;
+  }
+  .toggle button.active { background: var(--accent); color: #1a1300; font-weight: 600; }
+
+  .log-list { display: flex; flex-direction: column; gap: 0; max-height: 640px; overflow-y: auto; }
+  .log-item {
+    border-bottom: 1px solid var(--line); padding: 13px 4px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .log-item:last-child { border-bottom: none; }
+  .log-item .badge {
+    flex-shrink: 0; width: 64px; text-align: center; font-family: var(--mono); font-size: 10.5px;
+    padding: 3px 0; border-radius: 3px; font-weight: 600; letter-spacing: 0.4px; margin-top: 2px;
+  }
+  .badge.flagged { background: rgba(214, 69, 80, 0.16); color: var(--accent-2); border: 1px solid rgba(214,69,80,0.4); }
+  .badge.clear { background: rgba(124, 136, 148, 0.1); color: var(--text-dim); border: 1px solid var(--line); }
+  .log-item .body { flex: 1; }
+  .log-item .meta { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); margin-bottom: 4px; }
+  .log-item .text { font-size: 13px; line-height: 1.55; color: var(--text); }
+  .log-item .score { flex-shrink: 0; font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--accent); width: 46px; text-align: right; margin-top: 2px; }
+
+  .footer-note {
+    font-family: var(--mono); font-size: 11px; color: var(--text-dim); text-align: center;
+    margin-top: 30px; line-height: 1.7;
+  }
+  .footer-note a { color: var(--accent); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="mark">SCAA</span>
+    <div>
+      <h1>Cross-Domain Audit Console</h1>
+      <div class="sub">selective causal auditing — severity-gated explanation review</div>
+    </div>
+  </div>
+  <div class="loader-controls">
+    <span class="status-dot" id="statusDot"></span>
+    <span id="statusText">no data loaded</span>
+    <input type="file" id="fileInput" accept="application/json">
+  </div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="wrap" id="content">
+  <div class="empty-state">
+    <div class="big">Load dashboard_data.json to begin</div>
+    Run <span style="color:var(--accent)">python3 -m scaa.domains.dashboard_data</span> to generate it,<br>
+    then select the file above (dashboard/dashboard_data.json).
+  </div>
+</div>
+
+<div class="wrap"><div class="footer-note">
+  SCAA — Selective Causal Auditing for Agentic Systems &nbsp;·&nbsp; four domains, one unmodified severity gate<br>
+  Irreversibility · Impact · Deviation — computed identically across every domain shown above
+</div></div>
+
+<script>
+let DATA = null;
+let activeDomain = null;
+let charts = {};
+let logFilter = 'flagged';
+
+const DOMAIN_ORDER = ['scheduling', 'delivery', 'cloud', 'taillard_jssp'];
+const DOMAIN_COLOR = {
+  scheduling: '#e0a458', delivery: '#4caf7d', cloud: '#3b6ea5', taillard_jssp: '#d64550'
+};
+
+document.getElementById('fileInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (evt) => {
+    try {
+      DATA = JSON.parse(evt.target.result);
+      onDataLoaded();
+    } catch (err) {
+      document.getElementById('statusText').textContent = 'invalid JSON: ' + err.message;
+    }
+  };
+  reader.readAsText(file);
+});
+
+// Try auto-loading if served over http(s) (won't work from file://, that's what the picker is for)
+fetch('dashboard_data.json').then(r => r.ok ? r.json() : Promise.reject())
+  .then(json => { DATA = json; onDataLoaded(); })
+  .catch(() => {});
+
+function onDataLoaded() {
+  document.getElementById('statusDot').classList.add('live');
+  document.getElementById('statusText').textContent = 'data loaded';
+  buildTabs();
+  const first = DOMAIN_ORDER.find(d => DATA.domains && DATA.domains[d]);
+  if (first) selectDomain(first);
+}
+
+function buildTabs() {
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  DOMAIN_ORDER.forEach(key => {
+    if (!DATA.domains[key]) return;
+    const d = DATA.domains[key];
+    const el = document.createElement('div');
+    el.className = 'tab' + (key === activeDomain ? ' active' : '');
+    el.textContent = d.display_name;
+    el.onclick = () => selectDomain(key);
+    tabs.appendChild(el);
+  });
+}
+
+function selectDomain(key) {
+  activeDomain = key;
+  logFilter = 'flagged';
+  buildTabs();
+  render();
+}
+
+function fmtPct(x) { return (x * 100).toFixed(1) + '%'; }
+
+function render() {
+  const d = DATA.domains[activeDomain];
+  const content = document.getElementById('content');
+  const auditReduction = 1 - (d.n_gated / d.n_total);
+
+  let outcomeHtml = Object.entries(d.outcome_metrics).map(([k, v]) =>
+    `<div class="kpi"><div class="label">${k.replace(/_/g,' ')}</div><div class="value">${typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(1)) : v}</div></div>`
+  ).join('');
+
+  content.innerHTML = `
+    <div class="desc">${d.description}</div>
+    <div class="grid-kpi" style="margin-top:16px;">
+      <div class="kpi">
+        <div class="label">Decisions in trajectory</div>
+        <div class="value">${d.n_total}</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Flagged explanation-worthy</div>
+        <div class="value accent">${d.n_gated}</div>
+        <div class="foot">${fmtPct(d.n_gated / d.n_total)} of all decisions</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Audit load reduction</div>
+        <div class="value ok">${fmtPct(auditReduction)}</div>
+        <div class="foot">vs. explaining every decision</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Outcome metrics — this run</h2>
+      <div class="grid-kpi">${outcomeHtml}</div>
+    </div>
+
+    ${buildAggregatePanel()}
+
+    <div class="panel">
+      <h2>
+        <span>Explanation log</span>
+        <div class="log-controls">
+          <div class="toggle" id="logToggle">
+            <button data-mode="flagged" class="active">worthy explanations only</button>
+            <button data-mode="all">show full trajectory</button>
+          </div>
+        </div>
+      </h2>
+      <div class="log-list" id="logList"></div>
+    </div>
+  `;
+
+  document.querySelectorAll('#logToggle button').forEach(btn => {
+    btn.onclick = () => {
+      logFilter = btn.dataset.mode;
+      document.querySelectorAll('#logToggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderLog();
+    };
+  });
+
+  renderLog();
+  renderAggregateChart();
+}
+
+function buildAggregatePanel() {
+  const hasP3 = activeDomain === 'scheduling' && DATA.phase3_scenarios;
+  const hasCD = activeDomain !== 'scheduling' && DATA.cross_domain && DATA.cross_domain[activeDomain];
+  if (!hasP3 && !hasCD) return '';
+  return `
+    <div class="panel">
+      <h2>Critical-decision coverage — gate vs. baselines (multi-run)</h2>
+      <div class="chart-box"><canvas id="aggChart"></canvas></div>
+    </div>
+  `;
+}
+
+function renderAggregateChart() {
+  const canvas = document.getElementById('aggChart');
+  if (!canvas) return;
+  if (charts.agg) charts.agg.destroy();
+
+  let labels, gate, attribution, deviation, random;
+
+  if (activeDomain === 'scheduling' && DATA.phase3_scenarios) {
+    labels = Object.keys(DATA.phase3_scenarios);
+    gate = labels.map(s => DATA.phase3_scenarios[s].aggregate.critical_coverage_gate.mean);
+    attribution = labels.map(s => DATA.phase3_scenarios[s].aggregate.critical_coverage_attribution.mean);
+    deviation = labels.map(s => DATA.phase3_scenarios[s].aggregate.critical_coverage_deviation_only.mean);
+    random = labels.map(s => DATA.phase3_scenarios[s].aggregate.critical_coverage_random.mean);
+  } else if (DATA.cross_domain && DATA.cross_domain[activeDomain]) {
+    const agg = DATA.cross_domain[activeDomain].aggregate;
+    labels = [DATA.cross_domain[activeDomain].n_runs + ' runs'];
+    gate = [agg.critical_coverage_gate.mean];
+    attribution = [agg.critical_coverage_attribution.mean];
+    deviation = [agg.critical_coverage_deviation_only.mean];
+    random = [agg.critical_coverage_random.mean];
+  } else { return; }
+
+  charts.agg = new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'SCAA gate', data: gate, backgroundColor: '#d64550' },
+        { label: 'Attribution-top-k', data: attribution, backgroundColor: '#3b6ea5' },
+        { label: 'Deviation-only', data: deviation, backgroundColor: '#4caf7d' },
+        { label: 'Random-k', data: random, backgroundColor: '#7c8894' },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true, max: 1, ticks: { color: '#7c8894' }, grid: { color: '#232a32' } },
+        x: { ticks: { color: '#7c8894' }, grid: { display: false } }
+      },
+      plugins: { legend: { labels: { color: '#d8dee5', font: { family: 'IBM Plex Mono', size: 11 } } } }
+    }
+  });
+}
+
+function renderLog() {
+  const d = DATA.domains[activeDomain];
+  const list = document.getElementById('logList');
+  const steps = logFilter === 'flagged' ? d.steps.filter(s => s.explanation_worthy) : d.steps;
+
+  if (steps.length === 0) {
+    list.innerHTML = '<div style="padding:30px 4px;color:var(--text-dim);font-family:var(--mono);font-size:12px;">no decisions match this filter</div>';
+    return;
+  }
+
+  list.innerHTML = steps.map(s => `
+    <div class="log-item">
+      <div class="badge ${s.explanation_worthy ? 'flagged' : 'clear'}">${s.explanation_worthy ? 'FLAGGED' : 'clear'}</div>
+      <div class="body">
+        <div class="meta">step ${s.step_id} · tick ${s.tick} · job ${s.job_id} · priority ${s.priority}
+          ${s.severity_components && Object.keys(s.severity_components).length ? `· I=${s.severity_components.I} F=${s.severity_components.F} D=${s.severity_components.D}` : ''}
+        </div>
+        <div class="text">${s.narration}</div>
+      </div>
+      <div class="score">${s.severity_score !== null ? s.severity_score.toFixed(2) : '—'}</div>
+    </div>
+  `).join('');
+}
+</script>
+
+</body>
+</html>

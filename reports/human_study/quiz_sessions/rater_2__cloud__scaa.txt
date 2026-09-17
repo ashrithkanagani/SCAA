@@ -1,0 +1,33 @@
+AUDIT SESSION: rater_2 | domain=cloud | condition=scaa
+Number of decisions shown: 8 (of 26 total)
+Start a timer now. Read the following, then answer the 5 questions below.
+======================================================================
+
+Job 4 (priority 3, tick 7): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 8 (priority 3, tick 16): provisioning Server 0 instead of provisioning Server 1. Servers 0 and 1 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 12 (priority 3, tick 26): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 16 (priority 3, tick 34): provisioning Server 2 instead of provisioning Server 3. Servers 2 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 18 (priority 3, tick 37): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 23 (priority 3, tick 46): provisioning Server 1 instead of provisioning Server 2. Servers 1 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 1 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+Job 24 (priority 2, tick 47): provisioning Server 0 instead of provisioning Server 2. Servers 0 and 2 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 0 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility).
+Job 25 (priority 3, tick 48): provisioning Server 2 instead of provisioning Server 3. Servers 2 and 3 were both free and scored identically for this task -- the scheduling policy does not distinguish between otherwise-idle servers -- so Server 2 was picked as the lower-indexed tied candidate. Flagged for audit because the commitment would be hard to undo (high irreversibility) and the job was high priority and/or close to its deadline (high impact).
+
+======================================================================
+QUIZ (answer briefly, then record your total time):
+
+1. Why did the agent choose 'assign->M0' for task 12 (tick 26) over 'assign->M2'?
+   Your answer: ______________________
+
+2. Why did the agent choose 'assign->M1' for task 23 (tick 46) over 'assign->M2'?
+   Your answer: ______________________
+
+3. Why did the agent choose 'assign->M0' for task 4 (tick 7) over 'assign->M2'?
+   Your answer: ______________________
+
+4. Why did the agent choose 'assign->M0' for task 8 (tick 16) over 'assign->M1'?
+   Your answer: ______________________
+
+5. Why did the agent choose 'assign->M2' for task 16 (tick 34) over 'assign->M3'?
+   Your answer: ______________________
+
+Total time taken (mm:ss): ______

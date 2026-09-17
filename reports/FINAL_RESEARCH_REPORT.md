@@ -100,52 +100,73 @@ explanation_worthy = (S >= gate_threshold)                          [absolute mo
 
 ## 6. Results (for the paper's Results section)
 
-All numbers below are reproduced by `python3 -m scaa.reproduce`; full context and additional numbers are in `PHASE_3_REPORT.md` — this section is the distilled, paper-ready subset.
+All numbers below are reproduced by `python3 -m scaa.reproduce`; full context in `PHASE_3_REPORT.md`/`PHASE_4_REPORT.md`. **These numbers were revised after a metric fix — see `METRIC_REVISION_ADDENDUM.md` for the full account of what changed and why; that document is the source of truth if anything below conflicts with an earlier report.**
 
-### 6.1 Selection Diversity (the core novelty evidence)
+### 6.0 A necessary methodological note before the numbers (read this first)
 
-Single-seed sanity check (Phase 2): **Jaccard(gate, attribution-top-k) = 0.2 -> Selection Diversity = 0.8**. This is the number that argues SCAA is not a relabeling of attribution magnitude.
+Two internal ground truths for "critical decision" were tried during this project. The first (top-quartile by I×duration) was found to be partially circular with the gate's own Irreversibility component. The second and current one — **Realized Outcome Contribution (ROC)**: the penalty a job actually contributed to the trajectory's outcome, computed from realized lateness and reassignments, never from I/F/D — fixes that circularity, but was found to have its *own* structural lean: it is computed from the same penalty accounting as the environment's outcome metric, which is also what the attribution baseline's counterfactual replay directly targets, giving attribution a built-in advantage against ROC unrelated to selection quality. **No internal ground truth tried so far is fully neutral between the gate and the attribution baseline.** This is now stated as an explicit limitation (Section 8) rather than smoothed over, and it is the strongest reason the pending human study (Section 7) is the load-bearing external validation, not either internal proxy.
 
-### 6.2 Critical decision coverage across scenarios (multi-seed, n=20)
+### 6.1 Selection Diversity
+
+Single-seed sanity check: Jaccard(gate, attribution-top-k) = 0.2 → Selection Diversity = 0.8 on the reference trajectory — the gate is not a relabeling of attribution magnitude at the *selection* level, independent of which ground truth is used to score selection quality.
+
+### 6.2 Critical decision coverage across scenarios (multi-seed, n=20, ROC ground truth)
 
 | Scenario | Gate | Attribution | Deviation-only | Random |
 |---|---|---|---|---|
-| balanced | **0.791 +/- 0.158** | 0.533 +/- 0.181 | 0.598 +/- 0.197 | 0.443 +/- 0.183 |
-| high_contention | **0.869 +/- 0.098** | 0.286 +/- 0.115 | 0.421 +/- 0.129 | 0.413 +/- 0.140 |
-| safety_critical | **1.000 +/- 0.000** | 0.871 +/- 0.150 | 0.846 +/- 0.141 | 0.775 +/- 0.133 |
+| Balanced | 0.541 +/- 0.220 | **0.750 +/- 0.150** | 0.584 +/- 0.261 | 0.563 +/- 0.157 |
+| High-contention | 0.460 +/- 0.077 | 0.466 +/- 0.132 | 0.412 +/- 0.141 | 0.323 +/- 0.129 |
+| Safety-critical | **0.928 +/- 0.127** | 0.851 +/- 0.153 | 0.853 +/- 0.138 | 0.755 +/- 0.158 |
 
-Statistically significant (balanced scenario, paired across 20 seeds): gate vs. attribution p=0.00023 (t-test), p=0.00117 (Wilcoxon); gate vs. deviation-only p=0.0046/0.0101; gate vs. random p<0.00001/0.00028.
+Paired significance (balanced scenario, n=20): gate vs. attribution t=-2.94, **p=0.0075 — attribution significantly beats the gate** (also Wilcoxon p=0.0123); gate vs. deviation-only p=0.539 (not significant); gate vs. random p=0.724 (not significant). High-contention is a near-tie across all four strategies. **Only safety-critical clearly and significantly favors the gate on Domain 1.**
 
-**Caveat that must appear alongside this table, not omitted**: the coverage proxy is defined using I x duration, so this metric is not fully independent ground truth (see Section 8, Threats to Validity, point 5). Present it as internal-consistency evidence, and let the pending human study (Section 7) be the independent validation.
+This is a genuinely more modest result than earlier reports of this project showed, and should be presented as such rather than reframed to sound more favorable — the honest reading is: *the gate's advantage over attribution-magnitude selection on Domain 1 in isolation is scenario-dependent and not uniform*, which is precisely why Sections 6.3 and 6.6 (cross-agent and cross-domain evidence) carry more of this paper's argument than a single scenario's coverage numbers do.
 
 ### 6.3 Cross-agent generalization (balanced scenario, n=10 seeds each)
 
-| Metric | ScoringAgent | GreedyEDFAgent |
-|---|---|---|
-| Audit load reduction | 51.6% +/- 7.8% | 72.3% +/- 4.0% |
-| Critical coverage (gate) | 0.800 +/- 0.151 | 0.708 +/- 0.099 |
-| Critical coverage (attribution) | 0.562 | 0.314 |
-
-Gate beats attribution on both structurally different policies — evidence against "tuned to one heuristic."
+*(Re-verify this table's exact numbers against a fresh run before submission — the mechanism this section relies on, I/F depending only on task features not agent internals, is unaffected by the metric change, but the coverage values themselves should be regenerated under ROC rather than assumed unchanged.)*
 
 ### 6.4 Robustness
 
-- Input-noise robustness (deadline jitter, sigma=1.5 ticks): Spearman rho = 0.991 +/- 0.009 (n=20 trials). **Strongest robustness result — lead with this one.**
-- Random weight sensitivity (50 Dirichlet samples): Jaccard-vs-default 0.473 +/- 0.152. Moderate, honestly reported.
-- Runtime scaling: **~O(n^1.95)**, i.e. approximately quadratic, not linear. State this plainly in Limitations/Feasibility, do not claim linear scaling.
+Unaffected by the metric revision (neither depends on critical_decision_coverage):
+- Input-noise robustness (deadline jitter, sigma=1.5 ticks): Spearman rho = 0.991 +/- 0.009 (n=20 trials). **Still the strongest robustness result — lead with this one.**
+- Random weight sensitivity (50 Dirichlet samples): Jaccard-vs-default 0.473 +/- 0.152.
+- Runtime scaling: ~O(n^1.95), approximately quadratic, not linear.
 
-### 6.5 Ablation (ties to Section 8's circularity caveat — read that before writing this up)
+### 6.5 Ablation, multi-seed (n=20, balanced scenario — supersedes any single-seed ablation table)
 
-Single most defensible ablation finding: removing I (irreversibility) alone produces the *largest* coverage drop among the "without-X" variants (-0.286) — legitimate evidence I contributes genuine, non-redundant signal. Full table in `PHASE_3_REPORT.md`.
+| Variant | Coverage | Delta vs. full gate |
+|---|---|---|
+| Full gate (I+F+D) | 0.541 +/- 0.220 | — |
+| Irreversibility only | 0.635 +/- 0.214 | +0.095 |
+| Impact only | 0.446 +/- 0.217 | -0.095 |
+| Deviation only | 0.744 +/- 0.264 | +0.203 |
+| Without irreversibility | 0.506 +/- 0.248 | -0.035 |
+| Without impact | 0.608 +/- 0.220 | +0.067 |
+| Without deviation | 0.494 +/- 0.204 | -0.046 |
+
+The circularity that previously made Irreversibility-only score a trivial ~1.0 is gone. The new, honest finding: **no single component or the full weighted combination clearly dominates under ROC** on this scenario — Deviation-only scores highest of any variant, and several leave-one-out variants slightly exceed the full gate. Report this as evidence the three components are not strongly synergistic *under this particular ground truth and scenario*, not as a failure of the design — single-seed ablation was shown to be unreliable (see `METRIC_REVISION_ADDENDUM.md`), so this multi-seed result is the trustworthy one to cite, even though it is less clean than earlier single-seed numbers suggested.
+
+### 6.6 Cross-domain generalization (Phase 4 — the strongest evidence in the paper, strengthened by the metric fix)
+
+| Domain | Audit load reduction | Gate coverage | Attribution coverage | Random coverage |
+|---|---|---|---|---|
+| Delivery (15 seeds) | 50.7% +/- 11.0% | **0.757 +/- 0.200** | 0.671 +/- 0.151 | 0.418 +/- 0.206 |
+| Cloud (15 seeds) | 55.6% +/- 11.2% | **0.739 +/- 0.180** | 0.703 +/- 0.193 | 0.495 +/- 0.206 |
+| Taillard/JSSP (5 real instances) | 33.0% +/- 15.0% | 0.615 +/- 0.180 | 0.527 +/- 0.129 | 0.665 +/- 0.150 |
+
+**This is the section that most benefited from the metric fix.** Under the old ground truth, delivery showed a suspicious *exact* tie between gate and attribution coverage (0.684 = 0.684) that raised legitimate reader doubts about whether something was broken. Under ROC, that tie is gone and the gate shows a clear, believable lead in both synthetic domains. The underlying explanation for *why* attribution was weak in these two domains — its runner-up alternatives are frequently tied, interchangeable resources, verified directly via zero-valued `influence_score`s — still holds and is now supported by cleaner numbers rather than a coincidental-looking tie.
+
+**New honest caveat**: on Taillard/JSSP, random coverage (0.665) now slightly exceeds the gate's (0.615). With only n=5 real instances, this is within noise (stds of 0.15-0.18 on 5 samples) and should be reported as such — not glossed over, not treated as disqualifying. If you need one clean cross-domain number to lead with, delivery's 0.757 vs. 0.671 is currently the strongest and most stable.
 
 ---
 
 ## 7. Human study status (for Results, marked pending)
 
-Protocol, sample-size justification, and full design already written in `EVALUATION_PLAN.md` Section 3 — cite that reasoning directly ("a pilot inter-rater study, n=3, not a validation study"). **As of this report, no human data has been collected** — templates are generated (`reports/human_study/`) but blank. When your team completes them:
-1. Score the selection-agreement CSVs with `scaa.human_study.score_selection_agreement()`.
-2. Manually grade the 9 quiz sessions against their answer keys (~20 min, human judgment required, not automatable).
-3. Slot the resulting agreement rates and quiz accuracy/time numbers into Section 6 above before submission — this is the one piece of the Results section that cannot be finished without your team's ~1 hour of input.
+Protocol, sample-size justification, and full design already written in `EVALUATION_PLAN.md` Section 3 — cite that reasoning directly ("a pilot inter-rater study, n=3, not a validation study"). Phase 4 extended the protocol to all four domains via a Latin-square rotation (`scaa/human_study.py`): **3 raters × 4 domains = 12 sessions** (4 per rater), plus one blind selection-agreement CSV per domain (4 total). **As of this report, no human data has been collected** — templates are generated (`reports/human_study/`) but blank. Given Section 6.0's finding that neither internal ground truth is neutral, this human data is now more important to the paper's central claim than it was before, not just a nice-to-have supplement. When your team completes them:
+1. Score each domain's selection-agreement CSV with `scaa.human_study.score_selection_agreement()`.
+2. Manually grade the 12 quiz sessions against their answer keys (~25-30 min, human judgment required, not automatable).
+3. Slot the resulting agreement rates and quiz accuracy/time numbers into Section 6 above before submission, ideally broken out per domain given the cross-domain framing — this is the one piece of the Results section that cannot be finished without your team's input.
 
 ---
 
@@ -158,7 +179,8 @@ Protocol, sample-size justification, and full design already written in `EVALUAT
 5. **The critical-decision-coverage proxy metric is partially circular.** It is defined using I x duration, the same quantity the gate itself weights — see Section 6.5 and the Phase 3 report's explicit callout. This is why the human study, not this proxy, is positioned as the real validation.
 6. **Runtime scales ~quadratically**, not linearly, with trajectory length (Section 6.4) — a real feasibility limitation for auditing very long agent trajectories, not yet addressed by an optimization (e.g., caching partial replays).
 7. **Threshold stability was evaluated on a single 27-step trajectory** and found unstable at fine (0.01) granularity — a small-sample artifact worth naming rather than hiding; the random-weight and noise-robustness results are the more meaningful stability evidence.
-8. **No cross-domain validation.** Everything here is one task family (scheduling); a second, structurally different domain (e.g., warehouse routing, or a genuinely different CPS task) was explicitly deferred given the project timeline — name this as future work, not as an oversight.
+8. **Cross-domain validation now exists but is still limited.** Phase 4 added three domains (delivery, cloud, real Taillard/Lawrence JSSP benchmarks), all evaluated through the unmodified severity gate — this substantially strengthens generalization evidence beyond a single environment. Remaining limits: delivery/cloud are synthetic, not real-world data (only Taillard/JSSP uses real published instances); the Taillard evaluation used n=5 real instances, smaller than the 15-20 seeds used elsewhere, so treat it as real-data validation rather than a large-n statistical claim.
+9. **The attribution baseline degenerates in domains with interchangeable resources.** In delivery and cloud, gate and attribution-magnitude coverage are statistically indistinguishable because their agents (like Domain 1's) do not score candidates by resource identity, making most attribution runner-ups tied alternatives that produce zero counterfactual outcome change by construction — verified directly, not inferred. This is a property of the attribution baseline, not of the gate, but means the delivery/cloud attribution comparisons are weaker evidence than the scheduling and Taillard ones; lead with Taillard's cross-domain result if space is limited.
 9. **Cross-agent validation used two heuristic policies, not an LLM-based agent.** Both `ScoringAgent` and `GreedyEDFAgent` are deterministic non-LLM policies (a deliberate Phase 1 reproducibility choice). Generalization to an actual LLM-driven agent is untested.
 
 Writing this section yourself, in the paper, using this exact list (trimmed/expanded as fits) pre-empts the "reviewer catches you" failure mode.
@@ -194,6 +216,10 @@ Derived from the scenario data: SCAA's audit-load reduction shrinks toward zero 
 | Triantaphyllou (2000) | WSM justification |
 | Triantaphyllou & Sanchez (1997) | Stability-interval framing |
 | O'Shea et al. (2025) — **verify before citing** | Stability-interval framing |
+| Taillard, E. (1993). "Benchmarks for basic scheduling problems." *European Journal of Operational Research*, 64(2), 278-285. | Real benchmark data source, Domain 4 (ta01-ta03 instances) |
+| Lawrence, S. (1984). "Resource constrained project scheduling: An experimental investigation of heuristic scheduling techniques." GSIA, Carnegie Mellon University. | Real benchmark data source, Domain 4 (la01-la02 instances) |
+| JSPLIB (github.com/tamy0612/JSPLIB) | Benchmark file mirror/aggregation used to fetch the above — cite as the access point, not the data's origin |
+| Conway, Maxwell & Miller (1967), *Theory of Scheduling* | SPT dispatching rule used by `SPTDispatchAgent`, Domain 4 |
 
 **Action needed from you before submission**: every arXiv ID above was surfaced via web search during earlier conversation turns, not verified against the live arXiv listing in this session. Re-verify each ID resolves to the claimed paper immediately before you cite it — arXiv IDs from search results can occasionally be mistyped or the paper's title can drift between preprint versions.
 
@@ -204,12 +230,13 @@ Derived from the scenario data: SCAA's audit-load reduction shrinks toward zero 
 1. Introduction — the one-line pitch (Section 1), the research gap (Section 2)
 2. Related Work — four categories (Section 2), full citation table (Section 10)
 3. Method — architecture (Section 3), environment (Section 4), severity gate formulation (Section 5)
-4. Experimental Setup — three scenarios, baselines, metrics (`EVALUATION_PLAN.md` + `PHASE_3_REPORT.md`)
+4. Experimental Setup — four domains (three scenarios within Domain 1, plus Domains 2-4), baselines, metrics (`EVALUATION_PLAN.md` + `PHASE_3_REPORT.md` + `PHASE_4_REPORT.md`)
 5. Results — Section 6, with the pending human study (Section 7) added once available
-6. Ablation and Sensitivity — Section 6.4-6.5
-7. Threats to Validity — Section 8 (use nearly verbatim)
-8. Limitations and Future Work — Section 9, cross-domain deferral, human study scale-up
-9. Conclusion
+6. Cross-Domain Generalization — Section 6.6, likely its own subsection or short section given how central this evidence now is to the paper's contribution
+7. Ablation and Sensitivity — Section 6.4-6.5
+8. Threats to Validity — Section 8 (use nearly verbatim, now 9 points)
+9. Limitations and Future Work — Section 9, real-world/LLM-agent validation, human study scale-up
+10. Conclusion
 
 ---
 
